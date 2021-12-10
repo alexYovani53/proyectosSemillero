@@ -21,8 +21,6 @@ import org.springframework.web.client.RestTemplate;
 import com.semillero.apiFind.model.PersonTvmaze;
 import com.semillero.apiFind.model.mediaItunes;
 import com.semillero.apiFind.model.resultObject;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -49,17 +47,17 @@ public class MisServicios {
 		 
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
-			ObjectMapper prueba = new ObjectMapper();
+			ObjectMapper objectJson = new ObjectMapper();
 			try {
 								
-				JsonNode actual =  prueba.readTree(response.getBody()).get("results");
+				JsonNode nodoRaiz =  objectJson.readTree(response.getBody()).get("results");
 				
-				actual.forEach(dato->{					
+				nodoRaiz.forEach(resultado->{					
 
 					resultObject itemLista = new resultObject();
-					itemLista.setArtisName(dato.get("artistName").asText());
-					itemLista.setTrackName(dato.get("trackName").asText());
-					itemLista.setWrapperType(dato.get("wrapperType").asText());	
+					itemLista.setArtisName(resultado.get("artistName").asText());
+					itemLista.setTrackName(resultado.get("trackName").asText());
+					itemLista.setWrapperType(resultado.get("wrapperType").asText());	
 					itemLista.setService("itunes");
 					itemLista.setServiceUrl("https://itunes.apple.com/search?term="+nombre);	
 					lista.add(itemLista);
@@ -75,13 +73,13 @@ public class MisServicios {
 	 
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
-			ObjectMapper prueba = new ObjectMapper();
+			ObjectMapper objectJson = new ObjectMapper();
 			try {
 								
-				JsonNode actual =  prueba.readTree(response.getBody());
+				JsonNode nodoRaiz =  objectJson.readTree(response.getBody());
 				
-				actual.forEach(dato->{	
-					JsonNode personaItem = dato.get("person");
+				nodoRaiz.forEach(persona->{	
+					JsonNode personaItem = persona.get("person");
 					resultObject itemLista = new resultObject();
 					itemLista.setArtisName(personaItem.get("name").asText());
 					itemLista.setService("tvmaze");
@@ -98,13 +96,14 @@ public class MisServicios {
 	}
 	
 	
-	/*
+	/**
 	 * http://localhost:8000/rest/find/{artist}/musicVideo/10
 	 * http://localhost:8000/rest/find/{artist}/movie/10
 	 * http://localhost:8000/rest/find/{artist}/music/10
 	 * http://localhost:8000/rest/find/{artist}/tvShow/10
 	 * http://localhost:8000/rest/find/{artist}/all/10
-	 * */
+	 * 
+	 */
 
 	@GetMapping("/find/{artist}/{typeItune}/{limit}")
 	public PersonTvmaze getMediasArtist(@PathVariable("artist") String artist,
@@ -118,13 +117,13 @@ public class MisServicios {
 	 
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
-			ObjectMapper prueba = new ObjectMapper();
+			ObjectMapper objectJson = new ObjectMapper();
 			try {
 								
-				JsonNode actual =  prueba.readTree(response.getBody());
+				JsonNode nodoRaiz =  objectJson.readTree(response.getBody());
 				
-				actual.forEach(dato->{	
-					JsonNode personaItem = dato.get("person");
+				nodoRaiz.forEach(subNodo->{	
+					JsonNode personaItem = subNodo.get("person");
 					
 					persona.setName(personaItem.get("name").asText());
 					persona.setCountry(personaItem.get("country").get("name").asText());
@@ -142,24 +141,24 @@ public class MisServicios {
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
 			
-			ObjectMapper prueba = new ObjectMapper();
+			ObjectMapper jsonObject = new ObjectMapper();
 			List<mediaItunes> coleccion =  new ArrayList<>();
 			try {
 								
-				JsonNode actual =  prueba.readTree(response.getBody()).get("results");
+				JsonNode resultadosItunes =  jsonObject.readTree(response.getBody()).get("results");
 				
-				actual.forEach(dato->{					
+				resultadosItunes.forEach(itemResultado->{					
 
 					
 					mediaItunes itemLista = new mediaItunes();
 					
 
-					if (dato.has("artistViewUrl")) itemLista.setArtistViewUrl(dato.get("artistViewUrl").asText());
-					if (dato.has("trackName")) itemLista.setTrackName(dato.get("trackName").asText());
-					if (dato.has("artistName")) itemLista.setArtistName(dato.get("artistName").asText());
-					if (dato.has("kind")) itemLista.setKind(dato.get("kind").asText());
-					if (dato.has("collectionName")) itemLista.setCollectionName(dato.get("collectionName").asText());
-					if (dato.has("primaryGenreName")) itemLista.setPrimaryGenreName(dato.get("primaryGenreName").asText());
+					if (itemResultado.has("artistViewUrl")) itemLista.setArtistViewUrl(itemResultado.get("artistViewUrl").asText());
+					if (itemResultado.has("trackName")) itemLista.setTrackName(itemResultado.get("trackName").asText());
+					if (itemResultado.has("artistName")) itemLista.setArtistName(itemResultado.get("artistName").asText());
+					if (itemResultado.has("kind")) itemLista.setKind(itemResultado.get("kind").asText());
+					if (itemResultado.has("collectionName")) itemLista.setCollectionName(itemResultado.get("collectionName").asText());
+					if (itemResultado.has("primaryGenreName")) itemLista.setPrimaryGenreName(itemResultado.get("primaryGenreName").asText());
 					
 					coleccion.add(itemLista);
 				});	
@@ -189,17 +188,17 @@ public class MisServicios {
 		 
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
-			ObjectMapper prueba = new ObjectMapper();
+			ObjectMapper jsonObject = new ObjectMapper();
 			try {
 								
-				JsonNode actual =  prueba.readTree(response.getBody()).get("results");
+				JsonNode nodoRaiz =  jsonObject.readTree(response.getBody()).get("results");
 				
-				actual.forEach(dato->{					
+				nodoRaiz.forEach(itemResult->{					
 
 					resultObject itemLista = new resultObject();
-					itemLista.setArtisName(dato.get("artistName").asText());
-					itemLista.setTrackName(dato.get("trackName").asText());
-					itemLista.setWrapperType(dato.get("wrapperType").asText());	
+					itemLista.setArtisName(itemResult.get("artistName").asText());
+					itemLista.setTrackName(itemResult.get("trackName").asText());
+					itemLista.setWrapperType(itemResult.get("wrapperType").asText());	
 					itemLista.setService("itunes");
 					itemLista.setServiceUrl("https://itunes.apple.com/search?term="+nombre);	
 					lista.add(itemLista);
@@ -215,13 +214,13 @@ public class MisServicios {
 	 
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
-			ObjectMapper prueba = new ObjectMapper();
+			ObjectMapper jsonObject = new ObjectMapper();
 			try {
 								
-				JsonNode actual =  prueba.readTree(response.getBody());
+				JsonNode nodoRaiz =  jsonObject.readTree(response.getBody());
 				
-				actual.forEach(dato->{	
-					JsonNode personaItem = dato.get("person");
+				nodoRaiz.forEach(persona->{	
+					JsonNode personaItem = persona.get("person");
 					resultObject itemLista = new resultObject();
 					itemLista.setArtisName(personaItem.get("name").asText());
 					itemLista.setService("tvmaze");
