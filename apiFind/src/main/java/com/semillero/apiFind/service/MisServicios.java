@@ -141,7 +141,6 @@ public class MisServicios {
 	 
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
-			System.out.println("llego");
 			
 			ObjectMapper prueba = new ObjectMapper();
 			List<mediaItunes> coleccion =  new ArrayList<>();
@@ -151,7 +150,6 @@ public class MisServicios {
 				
 				actual.forEach(dato->{					
 
-					System.out.println(dato.toString());
 					
 					mediaItunes itemLista = new mediaItunes();
 					
@@ -170,7 +168,6 @@ public class MisServicios {
 				
 			} catch (Exception e) {
 
-				System.out.println(e.getMessage());
 			}
 		}
 		
@@ -179,7 +176,7 @@ public class MisServicios {
 	}
 
 
-	/*
+	
 	@GetMapping("/find2/{nombre}")
 	public List<resultObject> find2(@PathVariable("nombre") String nombre) {
 		
@@ -239,5 +236,5 @@ public class MisServicios {
 	
 		return lista;
 	}
-	*/
+	
 }
