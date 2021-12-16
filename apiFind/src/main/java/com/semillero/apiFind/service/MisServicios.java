@@ -2,7 +2,6 @@ package com.semillero.apiFind.service;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +28,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RequestMapping("/rest")
 public class MisServicios {
 
+	
+	private static final String URL = "https://itunes.apple.com/search?term=";
+	
 	@Autowired
 	RestTemplate restTemplate;
 	
@@ -42,7 +44,7 @@ public class MisServicios {
 	    headers.setContentType(MediaType.APPLICATION_JSON);
 	    HttpEntity entity = new HttpEntity("parameters", headers);
 	        
-		var response  = restTemplate.exchange("https://itunes.apple.com/search?term="+nombre
+		var response  = restTemplate.exchange(URL+nombre
 		    		,HttpMethod.GET,entity,String.class);
 		 
 		if(response.getStatusCode() == HttpStatus.OK) {
@@ -59,7 +61,7 @@ public class MisServicios {
 					itemLista.setTrackName(resultado.get("trackName").asText());
 					itemLista.setWrapperType(resultado.get("wrapperType").asText());	
 					itemLista.setService("itunes");
-					itemLista.setServiceUrl("https://itunes.apple.com/search?term="+nombre);	
+					itemLista.setServiceUrl(URL+nombre);	
 					lista.add(itemLista);
 				});	
 				
@@ -104,7 +106,7 @@ public class MisServicios {
 	 * http://localhost:8000/rest/find/{artist}/all/10
 	 * 
 	 */
-
+ 
 	@GetMapping("/find/{artist}/{typeItune}/{limit}")
 	public PersonTvmaze getMediasArtist(@PathVariable("artist") String artist,
 										@PathVariable("limit") int limit,
@@ -123,6 +125,7 @@ public class MisServicios {
 				JsonNode nodoRaiz =  objectJson.readTree(response.getBody());
 				
 				nodoRaiz.forEach(subNodo->{	
+					
 					JsonNode personaItem = subNodo.get("person");
 					
 					persona.setName(personaItem.get("name").asText());
@@ -132,10 +135,11 @@ public class MisServicios {
 				});	
 				
 			} catch (Exception e) {
+				
 			}
 		}
 		
-		response  = restTemplate.getForEntity("https://itunes.apple.com/search?term="+artist+"&entity="+typeItune+"&limit="+limit
+		response  = restTemplate.getForEntity(URL+artist+"&entity="+typeItune+"&limit="+limit
 	    		,String.class);
 	 
 		if(response.getStatusCode() == HttpStatus.OK) {
@@ -180,12 +184,10 @@ public class MisServicios {
 	public List<resultObject> find2(@PathVariable("nombre") String nombre) {
 		
 
-		List<resultObject> lista =  new ArrayList<>();		
-		
-	        
-		ResponseEntity<String> response  = restTemplate.getForEntity("https://itunes.apple.com/search?term="+nombre
+		List<resultObject> lista =  new ArrayList<>();			        
+		ResponseEntity<String> response  = restTemplate.getForEntity(URL+nombre
 		    		,String.class);
-		 
+		
 		if(response.getStatusCode() == HttpStatus.OK) {
 			
 			ObjectMapper jsonObject = new ObjectMapper();
@@ -200,7 +202,7 @@ public class MisServicios {
 					itemLista.setTrackName(itemResult.get("trackName").asText());
 					itemLista.setWrapperType(itemResult.get("wrapperType").asText());	
 					itemLista.setService("itunes");
-					itemLista.setServiceUrl("https://itunes.apple.com/search?term="+nombre);	
+					itemLista.setServiceUrl(URL+nombre);	
 					lista.add(itemLista);
 				});	
 				
