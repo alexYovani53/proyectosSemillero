@@ -1,14 +1,28 @@
 package com.mapeo.restjpa2.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+
 
 @Entity
 @Table(name = "SEGUROS")
@@ -40,6 +54,21 @@ public class Seguros implements Serializable{
 	
 	@Column(name="DNI_CL")
 	private Integer dniCl;
+	
+	
+	@JoinColumn(name="DNI_CL",updatable = false,insertable = false)
+	@ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	private Clientes cliente;
+	
+	
+
+	public Clientes getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Clientes cliente) {
+		this.cliente = cliente;
+	}
 
 	public Integer getNumeroPoliza() {
 		return numeroPoliza;

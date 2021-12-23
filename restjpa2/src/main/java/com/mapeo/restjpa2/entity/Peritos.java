@@ -1,10 +1,14 @@
 package com.mapeo.restjpa2.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -50,6 +54,20 @@ public class Peritos implements Serializable{
 	
 	@Column(name="CIUDAD")
 	private String ciudad;
+
+	
+	@OneToMany(cascade=CascadeType.ALL,orphanRemoval = true)
+	@JoinColumn(name="DNI_PERITO")
+	private List<Siniestros> siniestros;
+	
+	
+	public List<Siniestros> getSiniestros() {
+		return siniestros;
+	}
+
+	public void setSiniestros(List<Siniestros> siniestros) {
+		this.siniestros = siniestros;
+	}
 
 	public Integer getDniPerito() {
 		return dniPerito;

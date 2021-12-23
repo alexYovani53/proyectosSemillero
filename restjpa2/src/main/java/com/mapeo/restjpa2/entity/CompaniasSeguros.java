@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
@@ -20,11 +24,15 @@ public class CompaniasSeguros implements Serializable{
 	@Column(name="ID")
 	private Integer id;
 	
-	@Column(name="NUMERO_POLIZA")
-	private Integer numeroPoliza;
+	@ManyToOne
+	@MapsId("numeroPoliza")
+	@JoinColumn(name="NUMERO_POLIZA")
+	Seguros seguro;
 	
-	@Column(name="NOMBRE_COMPANIA")
-	private String nombreCompania;
+	@ManyToOne
+	@MapsId("nombreCompania")
+	@JoinColumn(name="NOMBRE_COMPANIA")
+	Companias compania;
 
 	public Integer getId() {
 		return id;
@@ -34,20 +42,20 @@ public class CompaniasSeguros implements Serializable{
 		this.id = id;
 	}
 
-	public Integer getNumeroPoliza() {
-		return numeroPoliza;
+	public Seguros getSeguro() {
+		return seguro;
 	}
 
-	public void setNumeroPoliza(Integer numeroPoliza) {
-		this.numeroPoliza = numeroPoliza;
+	public void setSeguro(Seguros seguro) {
+		this.seguro = seguro;
 	}
 
-	public String getNombreCompania() {
-		return nombreCompania;
+	public Companias getCompania() {
+		return compania;
 	}
 
-	public void setNombreCompania(String nombreCompania) {
-		this.nombreCompania = nombreCompania;
+	public void setCompania(Companias compania) {
+		this.compania = compania;
 	}
 
 	public static long getSerialversionuid() {
