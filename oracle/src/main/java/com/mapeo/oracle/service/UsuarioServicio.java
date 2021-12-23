@@ -30,6 +30,12 @@ public class UsuarioServicio {
 		return usuarioRepository.findAll();
 	}
 	
+	@GetMapping(path= "/buscar/por/email/{email}")
+	public List<Usuario> getUsuarios(@PathVariable("email") String email){
+		return usuarioRepository.findByEmail(email);
+	}
+	
+	
 	@PostMapping(path="/guardar")
 	public Usuario guardar(@RequestBody Usuario usuario) {
 		return usuarioRepository.save(usuario);
