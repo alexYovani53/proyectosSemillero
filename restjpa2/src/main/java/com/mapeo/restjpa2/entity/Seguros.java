@@ -3,12 +3,7 @@ package com.mapeo.restjpa2.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,14 +28,14 @@ public class Seguros implements Serializable{
 	 */
 	private static final long serialVersionUID = -789210520875313341L;
 
-	
+
 	@Id
 	@Column(name="NUMERO_POLIZA")
 	private Integer numeroPoliza;
 
 	@Column(name="RAMO")
 	private String ramo;
-	
+
 	@Column(name="FECHA_INICIO")
 	@Temporal(TemporalType.DATE)
 	private Date fechaInicio ;
@@ -51,16 +46,13 @@ public class Seguros implements Serializable{
 
 	@Column(name="CONDICIONES_PARTICULARES")
 	private String condicionesParticulares;
-	
+
 	@Column(name="DNI_CL")
 	private Integer dniCl;
-	
-	
+
 	@JoinColumn(name="DNI_CL",updatable = false,insertable = false)
 	@ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private Clientes cliente;
-	
-	
 
 	public Clientes getCliente() {
 		return cliente;
@@ -121,6 +113,5 @@ public class Seguros implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
 }

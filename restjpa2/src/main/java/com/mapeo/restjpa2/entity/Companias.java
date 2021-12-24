@@ -2,12 +2,15 @@ package com.mapeo.restjpa2.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,6 +18,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name="COMPANIAS")
 public class Companias implements Serializable {
+
+
 
 	/**
 	 * 
@@ -46,7 +51,6 @@ public class Companias implements Serializable {
 
 	@Column(name="NOTAS")
 	private String notas;
-	
 	
 
 	public String getNombreCompania() {
@@ -116,6 +120,6 @@ public class Companias implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
+
 }

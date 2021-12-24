@@ -2,9 +2,12 @@ package com.mapeo.restjpa2.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,16 +24,15 @@ public class CompaniasSeguros implements Serializable{
 	private static final long serialVersionUID = -7178913671192534405L;
 
 	@Id
+	@GeneratedValue
 	@Column(name="ID")
 	private Integer id;
 	
 	@ManyToOne
-	@MapsId("numeroPoliza")
 	@JoinColumn(name="NUMERO_POLIZA")
 	Seguros seguro;
 	
 	@ManyToOne
-	@MapsId("nombreCompania")
 	@JoinColumn(name="NOMBRE_COMPANIA")
 	Companias compania;
 
