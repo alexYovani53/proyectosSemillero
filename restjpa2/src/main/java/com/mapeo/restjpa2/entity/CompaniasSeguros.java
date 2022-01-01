@@ -24,7 +24,6 @@ public class CompaniasSeguros implements Serializable{
 	private static final long serialVersionUID = -7178913671192534405L;
 
 	@Id
-	@GeneratedValue
 	@Column(name="ID")
 	private Integer id;
 	
