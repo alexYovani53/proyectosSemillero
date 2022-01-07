@@ -1,46 +1,30 @@
-package com.mapeo.restjpa2.entity;
+package com.mapeo.restjpa2.dto;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="SINIESTROS")
-public class Siniestros implements Serializable{
+public class SiniestrosDto implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8944979449370142487L;
+	private static final long serialVersionUID = -3086837135091212026L;
 
-	
-	@Id
-	@Column(name="ID_SINIESTRO")
 	private Integer idSiniestro;
 	
-	@Column(name="FECHA_SINIESTRO")
 	private Date fechaSiniestro;
 	
-	@Column(name="CAUSAS")
 	private String causas;
 	
-	@Column(name="ACEPTADO")
 	private String aceptado;
-	
-	@Column(name="INDEMNIZACION")
+
 	private Integer indemnizacion;
 	
-	@Column(name="NUMERO_POLIZA")
 	private Integer numeroPoliza;
 	
-	@Column(name="DNI_PERITO")
 	private Integer dniPerito;
 
-	
 	public Integer getIdSiniestro() {
 		return idSiniestro;
 	}
@@ -100,7 +84,5 @@ public class Siniestros implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
 	
 }

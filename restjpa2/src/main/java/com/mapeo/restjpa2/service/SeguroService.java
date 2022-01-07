@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mapeo.restjpa2.dto.SegurosDto;
 import com.mapeo.restjpa2.entity.Seguros;
 import com.mapeo.restjpa2.repository.SeguroRepository;
 
@@ -33,8 +34,10 @@ public class SeguroService {
 	
 	
 	@PostMapping("/Post")
-	public Seguros guardarSeguro(@RequestBody Seguros seg) {
-		return seguroRepo.save(seg);
+	public Seguros guardarSeguro(@RequestBody SegurosDto seguroDto) {
+		
+		Seguros seguro =  convertirSegurosDtoASeguros(seguroDto);
+		return seguroRepo.save(seguro);
 	}
 	
 	@DeleteMapping("/Delete/{id}")
@@ -50,5 +53,19 @@ public class SeguroService {
 		return seguroRepo.findByFechaInicioAfter(fecha);
 	}
 
+	
+	public Seguros convertirSegurosDtoASeguros(SegurosDto seguroDto) {
+		
+		Seguros seguro =  new Seguros();
+		
+		seguro.setCondicionesParticulares(seguroDto.getCondicionesParticulares());
+		seguro.setDniCl(seguroDto.getDniCl());
+		seguro.setFechaInicio(seguroDto.getFechaInicio());
+		seguro.setFechaVencimiento(seguroDto.getFechaVencimiento());
+		seguro.setNumeroPoliza(seguroDto.getNumeroPoliza());
+		seguro.setRamo(seguroDto.getRamo());
+		
+		return seguro;
+	}
 	
 }

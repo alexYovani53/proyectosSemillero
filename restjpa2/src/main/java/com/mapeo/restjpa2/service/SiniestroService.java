@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mapeo.restjpa2.dto.SiniestrosDto;
 import com.mapeo.restjpa2.entity.Siniestros;
 import com.mapeo.restjpa2.repository.SiniestroRepository;
 
@@ -31,7 +32,10 @@ public class SiniestroService {
 	}
 	
 	@PostMapping("/Post")
-	public Siniestros guardarSiniestro(@RequestBody Siniestros siniestro) {
+	public Siniestros guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto) {
+		
+		Siniestros siniestro =  convertirSiniestrosDtoASiniestros(siniestrosDto);
+		
 		return siniestroRepo.save(siniestro);
 	}
 	
@@ -49,6 +53,20 @@ public class SiniestroService {
 	}
 	
 	
+	public Siniestros convertirSiniestrosDtoASiniestros(SiniestrosDto siniestrosDto) {
+		
+		Siniestros siniestro =  new Siniestros();
+		
+		siniestro.setAceptado(siniestrosDto.getAceptado());
+		siniestro.setCausas(siniestrosDto.getCausas());
+		siniestro.setDniPerito(siniestrosDto.getDniPerito());
+		siniestro.setFechaSiniestro(siniestrosDto.getFechaSiniestro());
+		siniestro.setIdSiniestro(siniestrosDto.getIdSiniestro());
+		siniestro.setIndemnizacion(siniestrosDto.getIndemnizacion());
+		siniestro.setNumeroPoliza(siniestrosDto.getNumeroPoliza());
+		
+		return siniestro;
+	}
 	
 	
 	

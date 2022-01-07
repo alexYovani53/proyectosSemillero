@@ -1,31 +1,20 @@
-package com.mapeo.restjpa2.entity;
+package com.mapeo.restjpa2.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="COMPANIAS_SEGUROS")
-public class CompaniasSeguros implements Serializable{
+public class CompaniasSegurosDto implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7178913671192534405L;
+	private static final long serialVersionUID = 5393827985428148929L;
 
-	@Id        
-	@Column(name="ID")
+	
 	private Integer id;
 	
-	
-	@Column(name="NUMERO_POLIZA")
 	private Integer numeroPoliza;
 	
-	
-	@Column(name="NOMBRE_COMPANIA")
 	private String nombreCompania;
 
 	public Integer getId() {
@@ -35,7 +24,6 @@ public class CompaniasSeguros implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
 
 	public Integer getNumeroPoliza() {
 		return numeroPoliza;
@@ -56,7 +44,7 @@ public class CompaniasSeguros implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 
+	
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mapeo.restjpa2.dto.CompaniasDto;
 import com.mapeo.restjpa2.entity.Companias;
 import com.mapeo.restjpa2.repository.CompaniaRepository;
 
@@ -31,8 +32,10 @@ public class CompaniaService {
 	}
 	
 	@PostMapping("/Post")
-	public Companias guardar(@RequestBody Companias compania) {
-		return companiaRepo.save(compania);
+	public Companias guardar(@RequestBody CompaniasDto companiaDto) {
+		
+		Companias companias = convertirCompaniasDtoACompania(companiaDto);
+		return companiaRepo.save(companias);
 	}
 	
 	@DeleteMapping("/Delete/{id}")
@@ -43,9 +46,6 @@ public class CompaniaService {
 		}
 		
 	}
-	
-
-	
 	
 	
 	@GetMapping("/DSL3")
@@ -59,6 +59,20 @@ public class CompaniaService {
 		return companiaRepo.findByNombreCompaniaEndingWithOrNombreCompaniaContaining(textoFinal,textoContenido);
 	}
 	
+	public Companias convertirCompaniasDtoACompania(CompaniasDto companiaDto) {
+
+		Companias companias =  new Companias();
+		companias.setClaseVia(companiaDto.getClaseVia());
+		companias.setCodPostal(companiaDto.getCodPostal());
+		companias.setNombreCompania(companiaDto.getNombreCompania());
+		companias.setNombreVia(companiaDto.getNombreVia());
+		companias.setNotas(companiaDto.getNotas());
+		companias.setNumeroVia(companiaDto.getNumeroVia());
+		companias.setTelefonoContratacion(companiaDto.getTelefonoContratacion());
+		companias.setTelefonoSiniestros(companiaDto.getTelefonoSiniestros());
+		
+		return companias;
+	}
 	
 	
 	

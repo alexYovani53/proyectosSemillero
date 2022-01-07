@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mapeo.restjpa2.dto.PeritosDto;
 import com.mapeo.restjpa2.entity.Peritos;
 import com.mapeo.restjpa2.repository.PeritoRepository;
 
@@ -31,7 +32,9 @@ public class PeritoService {
 	}
 	
 	@PostMapping("/Post")
-	public Peritos guardarPerito(@RequestBody Peritos perito) {
+	public Peritos guardarPerito(@RequestBody PeritosDto peritoDto) {
+		
+		Peritos perito =  convertirPeritosDtoAPerito(peritoDto);
 		return peritoRepo.save(perito);
 	}
 	
@@ -51,6 +54,24 @@ public class PeritoService {
 	@GetMapping("/DSL8")
 	public List<Peritos> getPeritosNulos(){
 		return peritoRepo.findByApellidoPerito2IsNullOrTelefonoOficinaIsNull();
+	}
+	
+	public Peritos convertirPeritosDtoAPerito(PeritosDto peritoDto) {
+		
+		Peritos perito =  new Peritos();
+		
+		perito.setApellidoPerito1(peritoDto.getApellidoPerito1());
+		perito.setApellidoPerito2(peritoDto.getApellidoPerito2());
+		perito.setCiudad(peritoDto.getCiudad());
+		perito.setClaseVia(peritoDto.getClaseVia());
+		perito.setCodPostal(peritoDto.getCodPostal());
+		perito.setDniPerito(peritoDto.getDniPerito());
+		perito.setNombrePerito(peritoDto.getNombrePerito());
+		perito.setNumeroVia(peritoDto.getNumeroVia());
+		perito.setTelefonoContacto(peritoDto.getTelefonoContacto());
+		perito.setTelefonoOficina(peritoDto.getTelefonoOficina());
+		
+		return perito;
 	}
 	
 }

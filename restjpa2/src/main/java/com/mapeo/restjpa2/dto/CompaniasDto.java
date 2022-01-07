@@ -1,60 +1,30 @@
-package com.mapeo.restjpa2.entity;
+package com.mapeo.restjpa2.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-@Table(name="COMPANIAS")
-public class Companias implements Serializable {
-
-
+public class CompaniasDto implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -670073847108820995L;
+	private static final long serialVersionUID = -7087488458100192073L;
 
-	
-	@Id
-	@Column(name="NOMBRE_COMPANIA")
 	private String nombreCompania;
-	
-	@Column(name="CLASE_VIA")
+
 	private String claseVia;
 	
-	@Column(name="NOMBRE_VIA")
 	private String nombreVia;
 	
-	@Column(name="NUMERO_VIA")
 	private Integer numeroVia ;
 	
-	@Column(name="COD_POSTAL")
 	private Integer codPostal ;
 	
-	@Column(name="TELEFONO_CONTRATACION")
 	private Integer telefonoContratacion;
 
-	@Column(name="TELEFONO_SINIESTROS")
 	private Integer telefonoSiniestros;	
 
-	@Column(name="NOTAS")
 	private String notas;
-	
-	
-	@ManyToMany(mappedBy = "companiasLista",cascade = CascadeType.ALL)
-	@JsonIgnore
-	private List<Seguros> segurosLista =  new ArrayList<>();
-	
+
 	public String getNombreCompania() {
 		return nombreCompania;
 	}
@@ -87,6 +57,14 @@ public class Companias implements Serializable {
 		this.numeroVia = numeroVia;
 	}
 
+	public Integer getCodPostal() {
+		return codPostal;
+	}
+
+	public void setCodPostal(Integer codPostal) {
+		this.codPostal = codPostal;
+	}
+
 	public Integer getTelefonoContratacion() {
 		return telefonoContratacion;
 	}
@@ -103,14 +81,6 @@ public class Companias implements Serializable {
 		this.telefonoSiniestros = telefonoSiniestros;
 	}
 
-	public Integer getCodPostal() {
-		return codPostal;
-	}
-
-	public void setCodPostal(Integer codPostal) {
-		this.codPostal = codPostal;
-	}
-
 	public String getNotas() {
 		return notas;
 	}
@@ -119,17 +89,9 @@ public class Companias implements Serializable {
 		this.notas = notas;
 	}
 
-	public List<Seguros> getSegurosLista() {
-		return segurosLista;
-	}
-
-	public void setSegurosLista(List<Seguros> segurosLista) {
-		this.segurosLista = segurosLista;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
+	
+	
 }

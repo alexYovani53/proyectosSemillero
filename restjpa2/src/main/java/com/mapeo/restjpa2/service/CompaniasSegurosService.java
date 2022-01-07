@@ -1,11 +1,9 @@
 package com.mapeo.restjpa2.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mapeo.restjpa2.entity.Companias;
+import com.mapeo.restjpa2.dto.CompaniasSegurosDto;
 import com.mapeo.restjpa2.entity.CompaniasSeguros;
 import com.mapeo.restjpa2.repository.CompaniasSegurosRepository;
 
@@ -37,8 +35,14 @@ public class CompaniasSegurosService {
 	
 	
 	@PostMapping("/Post")
-	public CompaniasSeguros guardar(@RequestBody CompaniasSeguros manyToMany) {
-		return companiasRepository.save(manyToMany);
+	public CompaniasSeguros guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) {
+		
+		CompaniasSeguros nuevaCompaniaSeguros = new CompaniasSeguros();
+		nuevaCompaniaSeguros.setId(companiasSegurosDto.getId());
+		nuevaCompaniaSeguros.setNombreCompania(companiasSegurosDto.getNombreCompania());
+		nuevaCompaniaSeguros.setNumeroPoliza(companiasSegurosDto.getNumeroPoliza());
+		
+		return companiasRepository.save(nuevaCompaniaSeguros);
 	}
 
 	@DeleteMapping("/Delete/{id}")
@@ -49,14 +53,16 @@ public class CompaniasSegurosService {
 		}
 	}
 
+	
 	@GetMapping("/DSL5")
 	public List<CompaniasSeguros> getFiltrandoPorNombreCompanias(@RequestParam("nombreCompania") String nombreCompania){
-		return companiasRepository.findByCompaniaNombreCompaniaNot(nombreCompania);
+		return companiasRepository.findByNombreCompaniaNot(nombreCompania);
 	}
 	
+	
 	@PostMapping("/DSL6")
-	public List<CompaniasSeguros> getFiltrandoCompania(@RequestBody Companias compania,@RequestParam("fecha") @DateTimeFormat(pattern="yyyy-MM-dd") Date fecha){
-		return companiasRepository.findByCompaniaNotAndSeguroFechaVencimientoBefore(compania,fecha);
+	public List<CompaniasSeguros> getFiltrandoCompania(@RequestParam("numeroPoliza") Integer numeroPoliza){
+		return companiasRepository.findByNumeroPolizaBefore(numeroPoliza);
 	}
 	
 }
