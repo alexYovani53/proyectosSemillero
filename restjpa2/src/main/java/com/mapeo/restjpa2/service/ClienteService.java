@@ -30,8 +30,8 @@ public class ClienteService {
 	}
 	
 	@DeleteMapping("/Delete/{dni_cliente}")
-	public void eliminarCliente(@PathVariable("dni_cliente") Integer dni_cliente) {
-			Optional<Clientes> clienteBusqueda = clienteRepo.findById(dni_cliente);
+	public void eliminarCliente(@PathVariable("dni_cliente") Integer dniCliente) {
+			Optional<Clientes> clienteBusqueda = clienteRepo.findById(dniCliente);
 			if(clienteBusqueda.isPresent()) {
 				clienteRepo.delete(clienteBusqueda.get());
 			}
