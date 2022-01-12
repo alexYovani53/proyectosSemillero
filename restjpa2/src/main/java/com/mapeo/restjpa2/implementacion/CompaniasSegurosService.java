@@ -1,40 +1,34 @@
-package com.mapeo.restjpa2.service;
+package com.mapeo.restjpa2.implementacion;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.CompaniasSegurosDto;
 import com.mapeo.restjpa2.entity.CompaniasSeguros;
 import com.mapeo.restjpa2.repository.CompaniasSegurosRepository;
+import com.mapeo.restjpa2.ws.CompaniasSegurosServiceInterface;
 
-@RestController
-@RequestMapping("/companiasseguros")
-@CrossOrigin
 
-public class CompaniasSegurosService {
+@Component
+public class CompaniasSegurosService implements CompaniasSegurosServiceInterface{
 
 	
 	@Autowired
 	CompaniasSegurosRepository companiasRepository;
 	
-	@GetMapping("/GetAll")
+	@Override
 	public List<CompaniasSeguros> getCompaniasSeguros(){
 		return companiasRepository.findAll();
 	}
 	
 	
-	@PostMapping("/Post")
+	@Override
 	public CompaniasSeguros guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) {
 		
 		CompaniasSeguros nuevaCompaniaSeguros = new CompaniasSeguros();
@@ -45,7 +39,7 @@ public class CompaniasSegurosService {
 		return companiasRepository.save(nuevaCompaniaSeguros);
 	}
 
-	@DeleteMapping("/Delete/{id}")
+	@Override
 	public void eliminarCompaniasSeguros(@PathVariable("id") Integer id) {
 		Optional<CompaniasSeguros> companiasSegurosBusqueda =  companiasRepository.findById(id);
 		if(companiasSegurosBusqueda.isPresent()) {
@@ -54,13 +48,13 @@ public class CompaniasSegurosService {
 	}
 
 	
-	@GetMapping("/DSL5")
+	@Override
 	public List<CompaniasSeguros> getFiltrandoPorNombreCompanias(@RequestParam("nombreCompania") String nombreCompania){
 		return companiasRepository.findByNombreCompaniaNot(nombreCompania);
 	}
 	
 	
-	@PostMapping("/DSL6")
+	@Override
 	public List<CompaniasSeguros> getFiltrandoCompania(@RequestParam("numeroPoliza") Integer numeroPoliza){
 		return companiasRepository.findByNumeroPolizaBefore(numeroPoliza);
 	}

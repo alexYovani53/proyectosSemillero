@@ -1,45 +1,38 @@
-package com.mapeo.restjpa2.service;
+package com.mapeo.restjpa2.implementacion;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.SiniestrosDto;
 import com.mapeo.restjpa2.entity.Siniestros;
 import com.mapeo.restjpa2.repository.SiniestroRepository;
+import com.mapeo.restjpa2.ws.SiniestroServiceInterface;
 
-@RestController
-@RequestMapping("/siniestros")
-@CrossOrigin
-public class SiniestroService {
+@Component
+public class SiniestroService implements SiniestroServiceInterface{
 
 	@Autowired
 	SiniestroRepository siniestroRepo;
 	
-	@GetMapping("/GetAll")
+	@Override
 	public List<Siniestros> getSiniestros(){
 		return siniestroRepo.findAll();
 	}
 	
-	@PostMapping("/Post")
+	@Override
 	public Siniestros guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto) {
 		
-		Siniestros siniestro =  convertirSiniestrosDtoASiniestros(siniestrosDto);
-		
+		Siniestros siniestro =  convertirSiniestrosDtoASiniestros(siniestrosDto);		
 		return siniestroRepo.save(siniestro);
 	}
 	
-	@DeleteMapping("/Delete/{id}")
+	@Override
 	public void eliminarSiniestro(@PathVariable("id") Integer id) {
 		Optional<Siniestros> siniestroBusqueda =  siniestroRepo.findById(id);
 		if(siniestroBusqueda.isPresent()) {
@@ -47,7 +40,7 @@ public class SiniestroService {
 		}
 	}
 	
-	@GetMapping("/DSL10")
+	@Override
 	public List<Siniestros> getSiniestros(@RequestParam("limit1") Integer limit1, @RequestParam("limit2") Integer limit2){
 		return siniestroRepo.findByIndemnizacionBetween(limit1, limit2);
 	}
@@ -55,8 +48,7 @@ public class SiniestroService {
 	
 	public Siniestros convertirSiniestrosDtoASiniestros(SiniestrosDto siniestrosDto) {
 		
-		Siniestros siniestro =  new Siniestros();
-		
+		Siniestros siniestro =  new Siniestros();		
 		siniestro.setAceptado(siniestrosDto.getAceptado());
 		siniestro.setCausas(siniestrosDto.getCausas());
 		siniestro.setDniPerito(siniestrosDto.getDniPerito());

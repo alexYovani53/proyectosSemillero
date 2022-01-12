@@ -1,36 +1,37 @@
-package com.mapeo.restjpa2.service;
+package com.mapeo.restjpa2.implementacion;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.ClientesDto;
+import com.mapeo.restjpa2.dto.ClientesDtoUpdate;
 import com.mapeo.restjpa2.entity.Clientes;
 import com.mapeo.restjpa2.repository.ClienteRepository;
+import com.mapeo.restjpa2.service.CatalogosService;
+import com.mapeo.restjpa2.ws.ClientesServiceInterface;
 
-@RestController
-@RequestMapping("/cliente")
-@CrossOrigin
-public class ClienteService {
+
+@Component
+public class ClienteService implements ClientesServiceInterface {
 
 	@Autowired 
-	ClienteRepository clienteRepo;
+	ClienteRepository clienteRepo;	
 	
-	@GetMapping("/GetAll")
+	@Autowired
+	CatalogosService catalogoService;
+
+	@Override
 	public List<Clientes> getClientes(){
 		return clienteRepo.findAll();
 	}
 	
-	@DeleteMapping("/Delete/{dni_cliente}")
+	@Override
 	public void eliminarCliente(@PathVariable("dni_cliente") Integer dniCliente) {
 			Optional<Clientes> clienteBusqueda = clienteRepo.findById(dniCliente);
 			if(clienteBusqueda.isPresent()) {
@@ -38,21 +39,18 @@ public class ClienteService {
 			}
 	}
 	
-	@PostMapping("/Post")
-	public Clientes guardar(@RequestBody ClientesDto clienteDto) {
-		
-		Clientes cliente =  convertirClientesDtoAClientes(clienteDto);
-		
+	@Override
+	public Clientes guardar(@RequestBody ClientesDto clienteDto) {		
+		Clientes cliente =  convertirClientesDtoAClientes(clienteDto);		
 		return clienteRepo.save(cliente);
-	}
+	}	
 	
-	
-	@GetMapping("/DSL1/{ciudadInicial}")
+	@Override
 	public List<Clientes> getClientesPorCiudadIniciandoPor(@PathVariable("ciudadInicial") String letra){
 		return clienteRepo.findByCiudadStartingWithOrderByNombreClDesc(letra);
 	}
 	
-	@GetMapping("/DSL2/{nombre_cl}")
+	@Override
 	public List<Clientes> getClienteByNombreCl(@PathVariable("nombre_cl") String nombre){
 		return clienteRepo.findByNombreCl(nombre);
 	}
@@ -71,6 +69,26 @@ public class ClienteService {
 		cliente.setObservaciones(clienteDto.getObservaciones());
 		cliente.setTelefono(clienteDto.getTelefono());
 		return cliente;
+	}
+
+	@Override
+	public List<Map<String, Object>> buscarClientes() {
+		return catalogoService.buscarCliente();
+	}
+
+	@Override
+	public List<Map<String, Object>> buscarCliente(Integer dniCliente) {
+		return catalogoService.buscarCliente(dniCliente);
+	}
+
+	@Override
+	public int actualizarCliente(ClientesDtoUpdate clienteDatos) {
+		return catalogoService.cambiarNombre(clienteDatos);
+	}
+
+	@Override
+	public int insertarClienteQueryNative(ClientesDto clienteNuevo) {
+		return catalogoService.insertarClienteNuevo(clienteNuevo);
 	}
 	
 

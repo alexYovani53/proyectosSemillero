@@ -1,44 +1,40 @@
-package com.mapeo.restjpa2.service;
+package com.mapeo.restjpa2.implementacion;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.PeritosDto;
 import com.mapeo.restjpa2.entity.Peritos;
 import com.mapeo.restjpa2.repository.PeritoRepository;
+import com.mapeo.restjpa2.ws.PeritoServiceInterface;
 
-@RestController
-@RequestMapping("/peritos")
-@CrossOrigin
-public class PeritoService {
+
+
+@Component
+public class PeritoService implements PeritoServiceInterface{
 
 	@Autowired
 	PeritoRepository peritoRepo;
 	
-	@GetMapping("/GetAll")
+	@Override
 	public List<Peritos> getPeritos(){
 		return peritoRepo.findAll();
 	}
 	
-	@PostMapping("/Post")
+	@Override
 	public Peritos guardarPerito(@RequestBody PeritosDto peritoDto) {
 		
 		Peritos perito =  convertirPeritosDtoAPerito(peritoDto);
 		return peritoRepo.save(perito);
 	}
 	
-	@DeleteMapping("/Delete/{id}")
+	@Override
 	public void eliminarPerito(@PathVariable("id") Integer id) {
 		Optional<Peritos> peritoExistente = peritoRepo.findById(id);
 		if(peritoExistente.isPresent()) {
@@ -46,12 +42,12 @@ public class PeritoService {
 		}
 	}
 	
-	@GetMapping("/DSL7")
+	@Override
 	public List<Peritos> getPeritosPorInicialNumeroTelefono(@RequestParam("inicialTelefono") Integer inicialTelefono){
 		return peritoRepo.findByTelefonoContactoNotLike(inicialTelefono);
 	}
 	
-	@GetMapping("/DSL8")
+	@Override
 	public List<Peritos> getPeritosNulos(){
 		return peritoRepo.findByApellidoPerito2IsNullOrTelefonoOficinaIsNull();
 	}
