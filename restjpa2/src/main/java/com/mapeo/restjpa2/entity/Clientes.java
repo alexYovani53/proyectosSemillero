@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,6 +20,7 @@ public class Clientes implements Serializable{
 
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequencia_clientes")
 	@Column(name = "DNI_CL")
 	private Integer dniCl;
 	

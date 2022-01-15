@@ -3,6 +3,8 @@ package com.mapeo.restjpa2.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class SegurosDto  implements Serializable{
 
 	/**
@@ -14,8 +16,10 @@ public class SegurosDto  implements Serializable{
 
 	private String ramo;
 
+	@JsonFormat(pattern="YYYY-MM-DD")
 	private Date fechaInicio ;
 
+	@JsonFormat(pattern="YYYY-MM-DD")
 	private Date fechaVencimiento;
 
 	private String condicionesParticulares;
