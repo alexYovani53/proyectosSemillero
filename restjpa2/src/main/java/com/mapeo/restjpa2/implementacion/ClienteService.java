@@ -62,7 +62,7 @@ public class ClienteService implements ClientesServiceInterface {
 		cliente.setCiudad(clienteDto.getCiudad());
 		cliente.setClaseVia(clienteDto.getClaseVia());
 		cliente.setCodPostal(clienteDto.getCodPostal());
-		cliente.setDniCl(clienteDto.getDniCl());
+		//cliente.setDniCl(clienteDto.getDniCl());
 		cliente.setNombreCl(clienteDto.getNombreCl());
 		cliente.setNombreVia(clienteDto.getNombreVia());
 		cliente.setNumeroVia(clienteDto.getNumeroVia());

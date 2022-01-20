@@ -2,12 +2,10 @@ package com.mapeo.restjpa2.service;
 
 import java.sql.Types;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlInOutParameter;
 import org.springframework.jdbc.core.SqlOutParameter;
@@ -24,6 +22,8 @@ import com.mapeo.restjpa2.dto.SegurosDto;
 @Service
 public class ProcedimientoAlmacenado {
 
+	public static final String DNI_CL = "dniCl";
+	
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
@@ -36,7 +36,7 @@ public class ProcedimientoAlmacenado {
 				+ "end;";
 		
 		SqlParameterSource sqlParameterSource =  new MapSqlParameterSource()
-				.addValue("dniCl",idCliente);
+				.addValue(DNI_CL,idCliente);
 		
 		return namedParameterJdbcTemplate.update(query, sqlParameterSource);
 		
@@ -54,7 +54,7 @@ public class ProcedimientoAlmacenado {
 						new SqlParameter("fechain",Types.DATE),
 						new SqlParameter("fechafin",Types.DATE),
 						new SqlParameter("condiciones",Types.VARCHAR),
-						new SqlInOutParameter("dnicl", Types.NUMERIC)
+						new SqlInOutParameter(DNI_CL, Types.NUMERIC)
 				);
 			
 			SqlParameterSource parametros =  new MapSqlParameterSource()
@@ -62,13 +62,13 @@ public class ProcedimientoAlmacenado {
 					.addValue("fechain",new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
 					.addValue("fechafin",dtoRequest.getFechaVencimiento())
 					.addValue("condiciones", dtoRequest.getCondicionesParticulares())
-					.addValue("dnicl", dtoRequest.getDniCl());
+					.addValue(DNI_CL, dtoRequest.getDniCl());
 			
 			Map<String, Object> out =  simpleJdbcCall.execute(parametros);
 			
 			ProcedimientoInsertPolizaDto dto = new ProcedimientoInsertPolizaDto();
 			dto.setPolizanumber(Integer.parseInt(out.get("numeropoliza").toString()));
-			dto.setDnicl(Integer.parseInt(out.get("dnicl").toString()));
+			dto.setDnicl(Integer.parseInt(out.get(DNI_CL).toString()));
 			
 			//dto.setFecha((Date) out.get("x"));
 			

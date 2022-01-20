@@ -20,16 +20,16 @@ import com.mapeo.restjpa2.entity.Siniestros;
 @CrossOrigin
 public interface SiniestroServiceInterface {
 
-	@GetMapping("/GetAll")
+	@GetMapping("/getAll")
 	public List<Siniestros> getSiniestros();
 	
-	@PostMapping("/Post")
+	@PostMapping("/post")
 	public Siniestros guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto);
 	
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/delete/{id}")
 	public void eliminarSiniestro(@PathVariable("id") Integer id);
 	
-	@GetMapping("/DSL10")
+	@GetMapping("/dSL10")
 	public List<Siniestros> getSiniestros(@RequestParam("limit1") Integer limit1, @RequestParam("limit2") Integer limit2);
 	
 }
