@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlInOutParameter;
@@ -23,6 +25,7 @@ import com.mapeo.restjpa2.dto.SegurosDto;
 public class ProcedimientoAlmacenado {
 
 	public static final String DNI_CL = "dniCl";
+	public static final Log LOG = LogFactory.getLog(ProcedimientoAlmacenado.class);
 	
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
@@ -70,13 +73,14 @@ public class ProcedimientoAlmacenado {
 			dto.setPolizanumber(Integer.parseInt(out.get("numeropoliza").toString()));
 			dto.setDnicl(Integer.parseInt(out.get(DNI_CL).toString()));
 			
-			//dto.setFecha((Date) out.get("x"));
+			//(Date) para convertir fecha
 			
 			
 			return dto;
 			
 			
 		} catch (Exception e) {
+			LOG.error(e);
 			return new ProcedimientoInsertPolizaDto();
 		}
 		

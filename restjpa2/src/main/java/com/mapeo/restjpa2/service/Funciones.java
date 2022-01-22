@@ -1,8 +1,12 @@
 package com.mapeo.restjpa2.service;
 
 
+import java.sql.Types;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlInOutParameter;
+import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
@@ -22,7 +26,14 @@ public class Funciones {
 		
 		try {
 			SimpleJdbcCall simpleJdbcCall =  new SimpleJdbcCall(jdbcTemplate);
-			simpleJdbcCall.withFunctionName("func_ingreso_poliza_retorno").withCatalogName("practica2");
+			simpleJdbcCall.withFunctionName("func_ingreso_poliza_retorno").withCatalogName("practica2")
+				.declareParameters(						
+						new SqlParameter("ramo",Types.VARCHAR),
+						new SqlParameter("fechain",Types.DATE),
+						new SqlParameter("fechafin",Types.DATE),
+						new SqlParameter("condiciones",Types.VARCHAR),
+						new SqlInOutParameter("dnicl", Types.NUMERIC)
+				);
 			
 			SqlParameterSource parametros =  new MapSqlParameterSource()
 					.addValue("ramo", dtoRequest.getRamo())
@@ -33,17 +44,13 @@ public class Funciones {
 			
 			Object out =  simpleJdbcCall.executeFunction(Integer.class,parametros);
 				
-			return Integer.parseInt(out.toString());
-			
+			return Integer.parseInt(out.toString());			
 			
 		} catch (Exception e) {
 
 			return -1;
 		}
 		
-
-		
-	
 	}
 	
 	

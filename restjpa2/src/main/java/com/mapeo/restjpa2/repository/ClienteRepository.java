@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mapeo.restjpa2.entity.Clientes;
+import com.mapeo.entity.entity.Clientes;
 
 
 @Repository("ClientesRepository")

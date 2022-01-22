@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.PeritosDto;
-import com.mapeo.restjpa2.entity.Peritos;
+import com.mapeo.entity.entity.Peritos;
 
 @RestController
 @RequestMapping("/peritos")

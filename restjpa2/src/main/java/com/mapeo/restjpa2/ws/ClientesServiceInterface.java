@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.ClientesDto;
 import com.mapeo.restjpa2.dto.ClientesDtoUpdate;
-import com.mapeo.restjpa2.entity.Clientes;
+import com.mapeo.entity.entity.Clientes;
 
 @RestController
 @RequestMapping("/cliente")

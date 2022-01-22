@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mapeo.restjpa2.dto.SegurosDto;
-import com.mapeo.restjpa2.entity.Seguros;
+import com.mapeo.entity.entity.Seguros;
 import com.mapeo.restjpa2.repository.SeguroRepository;
 import com.mapeo.restjpa2.ws.SegurosServiceInterface;
 

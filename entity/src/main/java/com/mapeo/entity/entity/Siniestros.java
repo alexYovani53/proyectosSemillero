@@ -1,4 +1,4 @@
-package com.mapeo.restjpa2.entity;
+package com.mapeo.entity.entity;
 
 import java.io.Serializable;
 import java.util.Date;

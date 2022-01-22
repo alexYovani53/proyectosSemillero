@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.mapeo.entity.entity.Clientes;
 import com.mapeo.restjpa2.dto.ClientesDto;
 import com.mapeo.restjpa2.dto.ClientesDtoUpdate;
-import com.mapeo.restjpa2.entity.Clientes;
 import com.mapeo.restjpa2.repository.ClienteRepository;
 import com.mapeo.restjpa2.service.CatalogosService;
 import com.mapeo.restjpa2.ws.ClientesServiceInterface;

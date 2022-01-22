@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.mapeo.restjpa2.entity.CompaniasSeguros;
+import com.mapeo.entity.entity.CompaniasSeguros;
 
 @Repository("CompaniasSeguros")
 public interface CompaniasSegurosRepository extends JpaRepository<CompaniasSeguros, Serializable> {

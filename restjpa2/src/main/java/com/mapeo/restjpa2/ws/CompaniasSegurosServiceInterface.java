@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.CompaniasSegurosDto;
-import com.mapeo.restjpa2.entity.CompaniasSeguros;
+import com.mapeo.entity.entity.CompaniasSeguros;
 
 @RestController
 @RequestMapping("/companiasseguros")

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.SegurosDto;
-import com.mapeo.restjpa2.entity.Seguros;
+import com.mapeo.entity.entity.Seguros;
 
 @RestController
 @RequestMapping("/seguros")
