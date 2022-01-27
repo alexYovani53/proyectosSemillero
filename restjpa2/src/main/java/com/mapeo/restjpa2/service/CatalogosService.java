@@ -57,10 +57,14 @@ public class CatalogosService {
 	
 	public int insertarClienteNuevo(ClientesDto cliente) {
 		String query = 
-				"insert into clientes(DNI_CL,NOMBRE_CL,APELLIDO_1,APELLIDO_2,CLASE_VIA,NUMERO_VIA,COD_POSTAL,CIUDAD,TELEFONO,OBSERVACIONES,NOMBRE_VIA)"
-				+ "values(:DNI_CL,:NOMBRE_CL,:APELLIDO_1,:APELLIDO_2,:CLASE_VIA,:NUMERO_VIA,:COD_POSTAL,:CIUDAD,:TELEFONO,:OBSERVACIONES,:NOMBRE_VIA)";
+				"DECLARE\r\n"
+				+ "    dniCliente Number;\r\n"
+				+ "BEGIN\r\n"
+				+ "    dniCliente := SEQUENCIA_CLIENTES.Nextval();\r\n"
+				+ "insert into clientes(DNI_CL,NOMBRE_CL,APELLIDO_1,APELLIDO_2,CLASE_VIA,NUMERO_VIA,COD_POSTAL,CIUDAD,TELEFONO,OBSERVACIONES,NOMBRE_VIA) values(dniCliente,:NOMBRE_CL,:APELLIDO_1,:APELLIDO_2,:CLASE_VIA,:NUMERO_VIA,:COD_POSTAL,:CIUDAD,:TELEFONO,:OBSERVACIONES,:NOMBRE_VIA);\r\n"
+				+ "END;\r\n"
+				+ "";
 		SqlParameterSource parameter =  new MapSqlParameterSource()
-				.addValue("DNI_CL", cliente.getDniCl())
 				.addValue("NOMBRE_CL", cliente.getNombreCl())
 				.addValue("APELLIDO_1", cliente.getApellido1())
 				.addValue("APELLIDO_2", cliente.getApellido2())

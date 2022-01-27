@@ -57,7 +57,6 @@ public class SeguroService implements SegurosServiceInterface{
 		seguro.setDniCl(seguroDto.getDniCl());
 		seguro.setFechaInicio(seguroDto.getFechaInicio());
 		seguro.setFechaVencimiento(seguroDto.getFechaVencimiento());
-		seguro.setNumeroPoliza(seguroDto.getNumeroPoliza());
 		seguro.setRamo(seguroDto.getRamo());
 		
 		return seguro;

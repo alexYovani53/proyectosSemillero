@@ -9,11 +9,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +33,9 @@ public class Seguros implements Serializable{
 	private static final long serialVersionUID = -789210520875313341L;
 
 
-	@Id
+	@Id	
+	@SequenceGenerator(name = "sequencia_seguros", sequenceName = "sequencia_seguros", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequencia_seguros")
 	@Column(name="NUMERO_POLIZA")
 	private Integer numeroPoliza;
 

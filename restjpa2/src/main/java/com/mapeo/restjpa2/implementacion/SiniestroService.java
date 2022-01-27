@@ -53,7 +53,6 @@ public class SiniestroService implements SiniestroServiceInterface{
 		siniestro.setCausas(siniestrosDto.getCausas());
 		siniestro.setDniPerito(siniestrosDto.getDniPerito());
 		siniestro.setFechaSiniestro(siniestrosDto.getFechaSiniestro());
-		siniestro.setIdSiniestro(siniestrosDto.getIdSiniestro());
 		siniestro.setIndemnizacion(siniestrosDto.getIndemnizacion());
 		siniestro.setNumeroPoliza(siniestrosDto.getNumeroPoliza());
 		

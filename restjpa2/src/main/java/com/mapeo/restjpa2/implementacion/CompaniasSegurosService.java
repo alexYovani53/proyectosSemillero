@@ -32,7 +32,6 @@ public class CompaniasSegurosService implements CompaniasSegurosServiceInterface
 	public CompaniasSeguros guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) {
 		
 		CompaniasSeguros nuevaCompaniaSeguros = new CompaniasSeguros();
-		nuevaCompaniaSeguros.setId(companiasSegurosDto.getId());
 		nuevaCompaniaSeguros.setNombreCompania(companiasSegurosDto.getNombreCompania());
 		nuevaCompaniaSeguros.setNumeroPoliza(companiasSegurosDto.getNumeroPoliza());
 		

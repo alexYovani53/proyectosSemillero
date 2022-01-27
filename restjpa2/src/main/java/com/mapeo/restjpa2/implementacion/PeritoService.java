@@ -61,7 +61,6 @@ public class PeritoService implements PeritoServiceInterface{
 		perito.setCiudad(peritoDto.getCiudad());
 		perito.setClaseVia(peritoDto.getClaseVia());
 		perito.setCodPostal(peritoDto.getCodPostal());
-		perito.setDniPerito(peritoDto.getDniPerito());
 		perito.setNombrePerito(peritoDto.getNombrePerito());
 		perito.setNumeroVia(peritoDto.getNumeroVia());
 		perito.setTelefonoContacto(peritoDto.getTelefonoContacto());
