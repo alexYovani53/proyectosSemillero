@@ -3,6 +3,7 @@ package com.mapeo.restjpa2.implementacion;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,16 +48,9 @@ public class SiniestroService implements SiniestroServiceInterface{
 	
 	
 	public Siniestros convertirSiniestrosDtoASiniestros(SiniestrosDto siniestrosDto) {
-		
-		Siniestros siniestro =  new Siniestros();		
-		siniestro.setAceptado(siniestrosDto.getAceptado());
-		siniestro.setCausas(siniestrosDto.getCausas());
-		siniestro.setDniPerito(siniestrosDto.getDniPerito());
-		siniestro.setFechaSiniestro(siniestrosDto.getFechaSiniestro());
-		siniestro.setIndemnizacion(siniestrosDto.getIndemnizacion());
-		siniestro.setNumeroPoliza(siniestrosDto.getNumeroPoliza());
-		
-		return siniestro;
+				
+		ModelMapper map =  new ModelMapper();
+		return map.map(siniestrosDto, Siniestros.class);
 	}
 	
 	

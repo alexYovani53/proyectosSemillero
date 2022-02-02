@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,18 +65,8 @@ public class CompaniaService implements CompaniaServiceInterface{
 	}
 	
 	public Companias convertirCompaniasDtoACompania(CompaniasDto companiaDto) {
-
-		Companias companias =  new Companias();
-		companias.setClaseVia(companiaDto.getClaseVia());
-		companias.setCodPostal(companiaDto.getCodPostal());
-		companias.setNombreCompania(companiaDto.getNombreCompania());
-		companias.setNombreVia(companiaDto.getNombreVia());
-		companias.setNotas(companiaDto.getNotas());
-		companias.setNumeroVia(companiaDto.getNumeroVia());
-		companias.setTelefonoContratacion(companiaDto.getTelefonoContratacion());
-		companias.setTelefonoSiniestros(companiaDto.getTelefonoSiniestros());
-		
-		return companias;
+		ModelMapper map =  new ModelMapper();
+		return map.map(companiaDto, Companias.class);
 	}
 
 	@Override

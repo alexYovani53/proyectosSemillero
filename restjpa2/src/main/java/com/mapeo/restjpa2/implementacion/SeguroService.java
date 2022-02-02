@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -50,16 +51,9 @@ public class SeguroService implements SegurosServiceInterface{
 
 	
 	public Seguros convertirSegurosDtoASeguros(SegurosDto seguroDto) {
-		
-		Seguros seguro =  new Seguros();
-		
-		seguro.setCondicionesParticulares(seguroDto.getCondicionesParticulares());
-		seguro.setDniCl(seguroDto.getDniCl());
-		seguro.setFechaInicio(seguroDto.getFechaInicio());
-		seguro.setFechaVencimiento(seguroDto.getFechaVencimiento());
-		seguro.setRamo(seguroDto.getRamo());
-		
-		return seguro;
+				
+		ModelMapper map =  new ModelMapper();
+		return map.map(seguroDto, Seguros.class);
 	}
 	
 }

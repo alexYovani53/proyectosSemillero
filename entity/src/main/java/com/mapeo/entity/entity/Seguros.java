@@ -21,10 +21,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
+
 
 
 @Entity
 @Table(name = "SEGUROS")
+@Data
 public class Seguros implements Serializable{
 
 	/**
@@ -77,72 +80,5 @@ public class Seguros implements Serializable{
 	private List<Companias> companiasLista = new ArrayList<>();
 	
 	
-	public List<Companias> getCompaniasLista() {
-		return companiasLista;
-	}
-
-	public void setCompaniasLista(List<Companias> companiasLista) {
-		this.companiasLista = companiasLista;
-	}
-
-	public Clientes getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Clientes cliente) {
-		this.cliente = cliente;
-	}
-
-	public Integer getNumeroPoliza() {
-		return numeroPoliza;
-	}
-
-	public void setNumeroPoliza(Integer numeroPoliza) {
-		this.numeroPoliza = numeroPoliza;
-	}
-
-	public String getRamo() {
-		return ramo;
-	}
-
-	public void setRamo(String ramo) {
-		this.ramo = ramo;
-	}
-
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
-	}
-
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
-	}
-
-	public String getCondicionesParticulares() {
-		return condicionesParticulares;
-	}
-
-	public void setCondicionesParticulares(String condicionesParticulares) {
-		this.condicionesParticulares = condicionesParticulares;
-	}
-
-	public Integer getDniCl() {
-		return dniCl;
-	}
-
-	public void setDniCl(Integer dniCl) {
-		this.dniCl = dniCl;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	
 }

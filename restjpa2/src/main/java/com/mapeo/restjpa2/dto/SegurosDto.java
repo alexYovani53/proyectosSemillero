@@ -5,6 +5,9 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.Data;
+
+@Data
 public class SegurosDto  implements Serializable{
 
 	/**
@@ -25,59 +28,6 @@ public class SegurosDto  implements Serializable{
 	private String condicionesParticulares;
 
 	private Integer dniCl;
-
-	public Integer getNumeroPoliza() {
-		return numeroPoliza;
-	}
-
-	public void setNumeroPoliza(Integer numeroPoliza) {
-		this.numeroPoliza = numeroPoliza;
-	}
-
-	public String getRamo() {
-		return ramo;
-	}
-
-	public void setRamo(String ramo) {
-		this.ramo = ramo;
-	}
-
-	public Date getFechaInicio() {
-		return fechaInicio;
-	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
-	}
-
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
-	}
-
-	public String getCondicionesParticulares() {
-		return condicionesParticulares;
-	}
-
-	public void setCondicionesParticulares(String condicionesParticulares) {
-		this.condicionesParticulares = condicionesParticulares;
-	}
-
-	public Integer getDniCl() {
-		return dniCl;
-	}
-
-	public void setDniCl(Integer dniCl) {
-		this.dniCl = dniCl;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 	
 	
 }

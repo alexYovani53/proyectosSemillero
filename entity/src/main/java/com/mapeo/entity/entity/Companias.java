@@ -13,8 +13,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Data;
+
 @Entity
 @Table(name="COMPANIAS")
+@Data
 public class Companias implements Serializable {
 
 
@@ -55,81 +58,5 @@ public class Companias implements Serializable {
 	@JsonIgnore
 	private List<Seguros> segurosLista =  new ArrayList<>();
 	
-	public String getNombreCompania() {
-		return nombreCompania;
-	}
-
-	public void setNombreCompania(String nombreCompania) {
-		this.nombreCompania = nombreCompania;
-	}
-
-	public String getClaseVia() {
-		return claseVia;
-	}
-
-	public void setClaseVia(String claseVia) {
-		this.claseVia = claseVia;
-	}
-
-	public String getNombreVia() {
-		return nombreVia;
-	}
-
-	public void setNombreVia(String nombreVia) {
-		this.nombreVia = nombreVia;
-	}
-
-	public Integer getNumeroVia() {
-		return numeroVia;
-	}
-
-	public void setNumeroVia(Integer numeroVia) {
-		this.numeroVia = numeroVia;
-	}
-
-	public Integer getTelefonoContratacion() {
-		return telefonoContratacion;
-	}
-
-	public void setTelefonoContratacion(Integer telefonoContratacion) {
-		this.telefonoContratacion = telefonoContratacion;
-	}
-
-	public Integer getTelefonoSiniestros() {
-		return telefonoSiniestros;
-	}
-
-	public void setTelefonoSiniestros(Integer telefonoSiniestros) {
-		this.telefonoSiniestros = telefonoSiniestros;
-	}
-
-	public Integer getCodPostal() {
-		return codPostal;
-	}
-
-	public void setCodPostal(Integer codPostal) {
-		this.codPostal = codPostal;
-	}
-
-	public String getNotas() {
-		return notas;
-	}
-
-	public void setNotas(String notas) {
-		this.notas = notas;
-	}
-
-	public List<Seguros> getSegurosLista() {
-		return segurosLista;
-	}
-
-	public void setSegurosLista(List<Seguros> segurosLista) {
-		this.segurosLista = segurosLista;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 
 }

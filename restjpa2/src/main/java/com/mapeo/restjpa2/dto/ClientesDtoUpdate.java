@@ -2,6 +2,9 @@ package com.mapeo.restjpa2.dto;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
+@Data
 public class ClientesDtoUpdate implements Serializable {
 
 	/**
@@ -15,29 +18,6 @@ public class ClientesDtoUpdate implements Serializable {
 	private  String nombreCliente;
 
 
-	public String getNombreCliente() {
-		return nombreCliente;
-	}
-
-
-	public void setNombreCliente(String nombreCliente) {
-		this.nombreCliente = nombreCliente;
-	}
-
-	public Integer getDniCliente() {
-		return dniCliente;
-	}
-
-
-	public void setDniCliente(Integer dniCliente) {
-		this.dniCliente = dniCliente;
-	}
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	} 
-	
 }
 
 

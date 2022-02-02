@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name="COMPANIAS_SEGUROS")
+@Data
 public class CompaniasSeguros implements Serializable{
 
 	/**
@@ -32,36 +35,5 @@ public class CompaniasSeguros implements Serializable{
 	
 	@Column(name="NOMBRE_COMPANIA")
 	private String nombreCompania;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-
-	public Integer getNumeroPoliza() {
-		return numeroPoliza;
-	}
-
-	public void setNumeroPoliza(Integer numeroPoliza) {
-		this.numeroPoliza = numeroPoliza;
-	}
-
-	public String getNombreCompania() {
-		return nombreCompania;
-	}
-
-	public void setNombreCompania(String nombreCompania) {
-		this.nombreCompania = nombreCompania;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-
 
 }

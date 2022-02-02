@@ -3,6 +3,7 @@ package com.mapeo.restjpa2.implementacion;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,9 +32,8 @@ public class CompaniasSegurosService implements CompaniasSegurosServiceInterface
 	@Override
 	public CompaniasSeguros guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) {
 		
-		CompaniasSeguros nuevaCompaniaSeguros = new CompaniasSeguros();
-		nuevaCompaniaSeguros.setNombreCompania(companiasSegurosDto.getNombreCompania());
-		nuevaCompaniaSeguros.setNumeroPoliza(companiasSegurosDto.getNumeroPoliza());
+		ModelMapper map =  new ModelMapper();
+		CompaniasSeguros nuevaCompaniaSeguros =  map.map(companiasSegurosDto, CompaniasSeguros.class);
 		
 		return companiasRepository.save(nuevaCompaniaSeguros);
 	}

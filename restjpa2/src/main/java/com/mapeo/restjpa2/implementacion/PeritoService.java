@@ -3,6 +3,7 @@ package com.mapeo.restjpa2.implementacion;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,20 +54,9 @@ public class PeritoService implements PeritoServiceInterface{
 	}
 	
 	public Peritos convertirPeritosDtoAPerito(PeritosDto peritoDto) {
-		
-		Peritos perito =  new Peritos();
-		
-		perito.setApellidoPerito1(peritoDto.getApellidoPerito1());
-		perito.setApellidoPerito2(peritoDto.getApellidoPerito2());
-		perito.setCiudad(peritoDto.getCiudad());
-		perito.setClaseVia(peritoDto.getClaseVia());
-		perito.setCodPostal(peritoDto.getCodPostal());
-		perito.setNombrePerito(peritoDto.getNombrePerito());
-		perito.setNumeroVia(peritoDto.getNumeroVia());
-		perito.setTelefonoContacto(peritoDto.getTelefonoContacto());
-		perito.setTelefonoOficina(peritoDto.getTelefonoOficina());
-		
-		return perito;
+			
+		ModelMapper map =  new ModelMapper();
+		return map.map(peritoDto, Peritos.class);
 	}
 	
 }

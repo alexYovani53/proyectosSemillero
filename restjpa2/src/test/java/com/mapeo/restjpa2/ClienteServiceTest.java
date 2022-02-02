@@ -166,6 +166,7 @@ class ClienteServiceTest {
 		cliente.setObservaciones("Ninguna");
 		cliente.setTelefono(34383647); 
 		
+		
 		int resultadoInsert = catalogoService.insertarClienteNuevo(cliente);
 
 		LOG.info("TEST insertarClienteQueryNative USANDO QUERY: COMPLETADO CON EXITO");

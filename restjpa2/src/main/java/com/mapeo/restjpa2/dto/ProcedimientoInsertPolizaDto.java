@@ -2,6 +2,9 @@ package com.mapeo.restjpa2.dto;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
+@Data
 public class ProcedimientoInsertPolizaDto implements Serializable{
 
 	/**
@@ -14,22 +17,5 @@ public class ProcedimientoInsertPolizaDto implements Serializable{
 	
 	private Integer dnicl ;
 
-	public Integer getPolizanumber() {
-		return polizanumber;
-	}
-
-	public void setPolizanumber(Integer polizanumber) {
-		this.polizanumber = polizanumber;
-	}
-
-	public Integer getDnicl() {
-		return dnicl;
-	}
-
-	public void setDnicl(Integer dnicl) {
-		this.dnicl = dnicl;
-	}
-
 	
-
 }
