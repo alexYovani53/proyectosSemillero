@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.mapeo.entity.entity.Seguros;
+import com.mapeo.restjpa2.entity.Seguros;
 import com.mapeo.restjpa2.dto.SegurosDto;
 import com.mapeo.restjpa2.service.Funciones;
 

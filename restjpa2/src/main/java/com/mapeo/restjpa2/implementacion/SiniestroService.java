@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mapeo.restjpa2.dto.SiniestrosDto;
-import com.mapeo.entity.entity.Siniestros;
+import com.mapeo.restjpa2.entity.Siniestros;
 import com.mapeo.restjpa2.repository.SiniestroRepository;
 import com.mapeo.restjpa2.ws.SiniestroServiceInterface;
 

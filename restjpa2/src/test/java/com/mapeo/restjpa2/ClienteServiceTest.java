@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.mapeo.entity.entity.Clientes;
+import com.mapeo.restjpa2.entity.Clientes;
 import com.mapeo.restjpa2.dto.ClientesDto;
 import com.mapeo.restjpa2.dto.ClientesDtoUpdate;
 import com.mapeo.restjpa2.repository.ClienteRepository;

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.mapeo.entity.entity.Peritos;
+import com.mapeo.restjpa2.entity.Peritos;
 import com.mapeo.restjpa2.repository.PeritoRepository;
 
 @SpringBootTest

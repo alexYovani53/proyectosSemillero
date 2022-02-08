@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mapeo.restjpa2.dto.PeritosDto;
-import com.mapeo.entity.entity.Peritos;
+import com.mapeo.restjpa2.entity.Peritos;
 import com.mapeo.restjpa2.repository.PeritoRepository;
 import com.mapeo.restjpa2.ws.PeritoServiceInterface;
 

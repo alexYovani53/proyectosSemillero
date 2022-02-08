@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.mapeo.entity.entity.Companias;
+import com.mapeo.restjpa2.entity.Companias;
 import com.mapeo.restjpa2.repository.CompaniaRepository;
 import com.mapeo.restjpa2.service.CatalogosService;
 

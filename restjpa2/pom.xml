@@ -18,11 +18,7 @@
 	</properties>
 	<dependencies>
 		
-		<dependency>				
-			<groupId>com.mapeo</groupId>
-			<artifactId>entity</artifactId>
-			<version>0.0.1</version>
-		</dependency>
+
 		<dependency>
 		   <groupId>commons-configuration</groupId>
 		   <artifactId>commons-configuration</artifactId>

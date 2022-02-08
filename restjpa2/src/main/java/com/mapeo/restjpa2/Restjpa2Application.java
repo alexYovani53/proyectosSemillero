@@ -2,10 +2,9 @@ package com.mapeo.restjpa2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"com.mapeo.entity.entity"})
+//@EntityScan(basePackages = {"com.mapeo.entity.entity"})
 public class Restjpa2Application {
 
 	public static void main(String[] args) {
