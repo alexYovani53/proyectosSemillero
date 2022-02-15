@@ -14,7 +14,7 @@ Por ultimo, el proyecto fue configurado para su despliegue en docker.
 **NOTA:**  La base de datos debe de estar local. 
 
 ## Versiones (Actual)
-* 1.0.0
+* 0.0.1
 
 ## Entorno de desarrollo
 - Java 16 ( o apartir de la version 8)
@@ -128,24 +128,71 @@ Si aun existen errores de referencias no encontradas, damos click derecho sobre 
 
 # MAVEN - COMPILAR JAR 
 
-Primero cambiar de la version 11 a la 8
-![](imagenes/6.png)
+- Cambiar de la version 11 a la 8 en el properties <java.version> 
 
-Segundo, cambiar la concexión de la base de datos. 
+```
+<version>0.0.1</version>
+<name>restjpa2</name>
+<description>Demo project for Spring Boot</description>
+<properties>
+	<java.version>8</java.version>
+</properties>
+<dependencies>
+```
+
+- Cambiar la url del datasource, ya que se uso docker, se debe cambiar    
+
+    `spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/XE`
+    
+    a
+    
+    `spring.datasource.url=jdbc:oracle:thin:@//host.docker.internal:1521/XE`
+    
 ![](imagenes/7.png)
 
+## Compilar a .JAR
 
+
+
+En la carpeta raiz del proyecto, ejecutar el siguiente comando.
+
+```
+
+./resjpa2  
+|----- .settings
+|----- .src
+|----- .target
+|
+|
+|------ pom.xml
+
+mvn clean install package
+```
+
+    
+
+## Creando Proyecto con Docker
+
+:warning: Para evitar cualquier inconveniente con docker en windows, el archivo Dockerfile debe estar en **"UTF-8-BOM"** de preferencia.  
 ![](imagenes/8.png)
 
 
-mvn clean install package
+```dockerfile
 
 
+./resjpa2  
+|----- .settings
+|----- .src
+|----- .target
+|
+|------ DockerFile
+|
+|
+|------ pom.xml
 
-docker build -t testservice .
-docker run -p 8585:8585 testservice
 
-<----DOCKER FILE---->FROM openjdk:8-jdk-alpine
+<----DOCKER FILE---->
+FROM openjdk:8-jdk-alpine
 
 VOLUME /tmp
 
@@ -153,9 +200,26 @@ COPY target/oracle-2.0.0.jar app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]
 
-Comando para ver LOGS:
+```
 
-docker logs --tail 1000 -f <nombre_contenedor>
+## Compilar Docker file - crear imagen 
+
+
+`docker build -t testservice . `
+
+:warning: no olvidar el "." al final, que indica que el dockerfile lo busque en la ruta actual
+
+
+## Crear una contenedor apartir de la imagen creada 
+
+`docker run -p 8585:8585 testservice`
+
+:warning: testservice es el nombre de la imagen
+
+
+## Ver logs del proyecto spring 
+
+`docker logs --tail 1000 -f <nombre_contenedor|<ID-CONTAINER>`
 
 
 docker build -t servicio-companero
