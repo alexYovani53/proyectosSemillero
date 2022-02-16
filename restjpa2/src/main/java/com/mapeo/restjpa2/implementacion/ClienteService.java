@@ -83,5 +83,14 @@ public class ClienteService implements ClientesServiceInterface {
 		return catalogoService.insertarClienteNuevo(clienteNuevo);
 	}
 	
+	/*
+	 * Servicio de Anibal
+	 */
+	
+	@Override
+	public List<Map<String, Object>> consultaSiniestros2021(Integer dniCl) {
+		return catalogoService.consultaSiniestros2021(dniCl);
+	}
+	
 
 }

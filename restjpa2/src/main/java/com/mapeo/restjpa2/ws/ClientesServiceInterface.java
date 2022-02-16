@@ -43,10 +43,17 @@ public interface ClientesServiceInterface {
 	
 	@GetMapping("/query/get/{dniCliente}")
 	public List<Map<String, Object>> buscarCliente(@PathVariable("dniCliente") Integer dniCliente);
-	
+	 
 	@PostMapping("/query/update")
 	public int actualizarCliente(@RequestBody ClientesDtoUpdate clienteDatos);
 	
 	@PostMapping("/query/insert")
 	public int insertarClienteQueryNative(@RequestBody ClientesDto clienteNuevo);
+	
+	/*
+	 * Servicio de Anibal	
+	 */
+	@GetMapping(path = "/query/select/{dniCl}")
+	public List<Map<String, Object>> consultaSiniestros2021(@PathVariable Integer dniCl);
+	//http://localhost:8585/cliente/query/select/4
 }
