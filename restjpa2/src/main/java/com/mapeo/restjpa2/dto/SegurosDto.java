@@ -19,10 +19,10 @@ public class SegurosDto  implements Serializable{
 
 	private String ramo;
 
-	@JsonFormat(pattern="YYYY-MM-DD")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD",timezone="GMT-6")
 	private Date fechaInicio ;
 
-	@JsonFormat(pattern="YYYY-MM-DD")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="YYYY-MM-DD",timezone="GMT-6")
 	private Date fechaVencimiento;
 
 	private String condicionesParticulares;

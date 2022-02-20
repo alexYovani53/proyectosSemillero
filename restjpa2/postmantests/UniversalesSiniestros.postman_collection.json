@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "c1f340e9-d828-442a-975c-d062a4631709",
+		"name": "UniversalesSiniestros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/siniestros/GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/siniestros/GetAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"siniestros",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/siniestros/DSL10?limit1=15001&limit2=50000",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/siniestros/DSL10?limit1=15001&limit2=50000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"siniestros",
+						"DSL10"
+					],
+					"query": [
+						{
+							"key": "limit1",
+							"value": "15001"
+						},
+						{
+							"key": "limit2",
+							"value": "50000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/siniestros/Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fechaSiniestro\": \"2021-12-31T23:14:55.000+00:00\",\r\n    \"causas\": \"accidente\",\r\n    \"aceptado\": \"no\",\r\n    \"indemnizacion\": 15000,\r\n    \"numeroPoliza\": 40,\r\n    \"dniPerito\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/siniestros/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"siniestros",
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

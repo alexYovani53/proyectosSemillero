@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "4b6ac488-8a9a-4439-b1d5-3636ae3d5b9c",
+		"name": "UniversalesPeritos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/peritos/GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/peritos/GetAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"peritos",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/peritos/Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"nombrePerito\": \"alex\",\r\n        \"apellidoPerito1\": \"yovani\",\r\n        \"apellidoPerito2\": \"tomas\",\r\n        \"telefonoContacto\": 34383647,\r\n        \"telefonoOficina\": 34383647,\r\n        \"claseVia\": \"na\",\r\n        \"nombreVia\": \"na\",\r\n        \"numeroVia\": 34383647,\r\n        \"codPostal\": 3004,\r\n        \"ciudad\": \"guatemala\",\r\n        \"siniestros\": [\r\n            {\r\n                \"fechaSiniestro\": \"2021-12-31T23:14:55.000+00:00\",\r\n                \"causas\": \"accidente\",\r\n                \"aceptado\": \"no\",\r\n                \"indemnizacion\": 15000,\r\n                \"numeroPoliza\": 22222222,\r\n                \"dniPerito\": 2\r\n            }\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/peritos/Post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"peritos",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/peritos/DSL7?inicialTelefono=34383647",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/peritos/DSL7?inicialTelefono=34383647",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"peritos",
+						"DSL7"
+					],
+					"query": [
+						{
+							"key": "inicialTelefono",
+							"value": "34383647"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/peritos/DSL8",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/peritos/DSL8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"peritos",
+						"DSL8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

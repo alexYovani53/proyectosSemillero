@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "6bac46ba-57fc-4e09-bc18-efc65b1dfcd2",
+		"name": "UniversalesCompaniasSeguros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/companiasseguros/GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/companiasseguros/GetAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companiasseguros",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companiasseguros/Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"numeroPoliza\": 24,\r\n        \"nombreCompania\": \"GUATEX\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/companiasseguros/Post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companiasseguros",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companiasseguros/DSL5?nombreCompania=Atocha S.A.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/companiasseguros/DSL5?nombreCompania=Universales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companiasseguros",
+						"DSL5"
+					],
+					"query": [
+						{
+							"key": "nombreCompania",
+							"value": "Universales"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companiasseguros/DSL6",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreCompania\": \"Universales\",\r\n    \"claseVia\": \"N/A\",\r\n    \"nombreVia\": \"N/A\",\r\n    \"numeroVia\": 15,\r\n    \"codPostal\": 3005,\r\n    \"telefonoContratacion\": 54364566,\r\n    \"telefonoSiniestros\": 54364567,\r\n    \"notas\": \"ninguna\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/companiasseguros/DSL5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companiasseguros",
+						"DSL5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companiasseguros/Delete/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/companiasseguros/Delete/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companiasseguros",
+						"Delete",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

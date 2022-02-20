@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "92e83a2c-419e-40c8-8c27-ef5765e3da5f",
+		"name": "UniversalesQuerys",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/cliente/query/insert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"dniCl\": 151215,\r\n        \"nombreCl\": \"Geovani\",\r\n        \"apellido1\": \"Guillermo\",\r\n        \"apellido2\": \"Felipe\",\r\n        \"claseVia\": \"N/A\",\r\n        \"numeroVia\": 5,\r\n        \"codPostal\": 3004,\r\n        \"ciudad\": \"Guatemala\",\r\n        \"telefono\": 34383648,\r\n        \"observaciones\": \"N/A\",\r\n        \"nombreVia\": \"N/A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/cliente/query/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"query",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/cliente/query/getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/cliente/query/getAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"query",
+						"getAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/cliente/query/get/151210",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/cliente/query/get/151210",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"query",
+						"get",
+						"151210"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/cliente/query/update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dniCliente\":151210,\r\n    \"nombreCliente\":\"Alexander\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/cliente/query/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"query",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companias/query/segurosPorCompania?compania=Atocha S.A.",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/companias/query/segurosPorCompania?compania=Atocha S.A.",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companias",
+						"query",
+						"segurosPorCompania"
+					],
+					"query": [
+						{
+							"key": "compania",
+							"value": "Atocha S.A."
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

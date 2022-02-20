@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "d77aa706-10e3-42a6-8cfb-30d2c821c6c6",
+		"name": "UniversalesSeguros",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/seguros/GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/seguros/GetAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"seguros",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/seguros/Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"ramo\": \"Vida\",\r\n        \"fechaInicio\": \"2021-12-29\",\r\n        \"fechaVencimiento\": \"2022-12-29\",\r\n        \"condicionesParticulares\": \"N/A\",\r\n        \"dniCl\": 47\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/seguros/Post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"seguros",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/seguros/DSL9/2021-12-31",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/seguros/DSL9/2021-12-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"seguros",
+						"DSL9",
+						"2021-12-31"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

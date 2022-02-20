@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "e4cc65ec-042a-43a9-a1f7-6954aac2c52f",
+		"name": "UniversalesCompanias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/companias/Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"nombreCompania\": \"Atocha N/A\",\r\n        \"claseVia\": \"N/A\",\r\n        \"nombreVia\": \"N/A\",\r\n        \"numeroVia\": 16,\r\n        \"codPostal\": 3005,\r\n        \"telefonoContratacion\": 88364566,\r\n        \"telefonoSiniestros\": 96964567,\r\n        \"notas\": \"ninguna\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/companias/Post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companias",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companias/GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/companias/GetAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companias",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companias/DSL3?valor=300&texto=Universales",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/companias/DSL3?valor=3001&texto=Universales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companias",
+						"DSL3"
+					],
+					"query": [
+						{
+							"key": "valor",
+							"value": "3001"
+						},
+						{
+							"key": "texto",
+							"value": "Universales"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/companias/DSL4?textoFinal=S.A&textoContenido=Atoc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/companias/DSL4?textoFinal=S.A&textoContenido=Atoc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"companias",
+						"DSL4"
+					],
+					"query": [
+						{
+							"key": "textoFinal",
+							"value": "S.A"
+						},
+						{
+							"key": "textoContenido",
+							"value": "Atoc"
+						},
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

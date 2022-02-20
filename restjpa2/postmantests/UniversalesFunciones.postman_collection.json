@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "eec6d1ec-2fb0-4612-8c3c-fbcda197217e",
+		"name": "UniversalesFunciones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/funciones/guardar/seguro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ramo\": \"Vida\",\r\n    \"fechaInicio\": \"29-10-2022\",\r\n    \"fechaVencimiento\": \"2022-12-29\",\r\n    \"condicionesParticulares\": \"N/A\",\r\n    \"dniCl\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/funciones/guardar/seguro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"funciones",
+						"guardar",
+						"seguro"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

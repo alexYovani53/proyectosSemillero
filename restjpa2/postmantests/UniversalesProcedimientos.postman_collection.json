@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "9957a0e3-147c-47ee-ad18-9d31d6e02c7a",
+		"name": "UniversalesProcedimientos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/procedimientos/eliminarCliente/2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/procedimientos/eliminarCliente/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"procedimientos",
+						"eliminarCliente",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/procedimientos/ingresarSeguro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"ramo\": \"Vida\",\r\n        \"fechaInicio\": \"29-10-2022\",\r\n        \"fechaVencimiento\": \"2022-12-29\",\r\n        \"condicionesParticulares\": \"N/A\",\r\n        \"dniCl\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/procedimientos/ingresarSeguro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"procedimientos",
+						"ingresarSeguro"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

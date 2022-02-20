@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "b8105968-bc2f-4053-9b06-040bd8a1bb06",
+		"name": "UniversalesClientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8585/cliente/GetAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/cliente/GetAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/cliente/Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"nombreCl\": \"Danilo5\",\r\n        \"apellido1\": \"Jeronimo\",\r\n        \"apellido2\": \"Tomas\",\r\n        \"claseVia\": \"N/A\",\r\n        \"numeroVia\": 5,\r\n        \"codPostal\": 3004,\r\n        \"ciudad\": \"Guatemala\",\r\n        \"telefono\": 34383648,\r\n        \"observaciones\": \"N/A\",\r\n        \"nombreVia\": \"N/A\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8585/cliente/Post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"Post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/cliente/DSL1/Guatemala",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/cliente/DSL1/Guatemala",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"DSL1",
+						"Guatemala"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8585/cliente/DSL2/Alex",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8585/cliente/DSL2/Alex",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8585",
+					"path": [
+						"cliente",
+						"DSL2",
+						"Alex"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
