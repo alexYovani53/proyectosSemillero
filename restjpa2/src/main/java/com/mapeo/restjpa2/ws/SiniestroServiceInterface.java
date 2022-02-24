@@ -2,6 +2,7 @@ package com.mapeo.restjpa2.ws;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public interface SiniestroServiceInterface {
 	public List<Siniestros> getSiniestros();
 	
 	@PostMapping("/post")
-	public Siniestros guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto);
+	public ResponseEntity<Siniestros> guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto);
 	
 	@DeleteMapping("/delete/{id}")
 	public void eliminarSiniestro(@PathVariable("id") Integer id);

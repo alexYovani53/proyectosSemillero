@@ -2,6 +2,7 @@ package com.mapeo.restjpa2.ws;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public interface CompaniasSegurosServiceInterface {
 	public List<CompaniasSeguros> getCompaniasSeguros();
 	
 	@PostMapping("/Post")
-	public CompaniasSeguros guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) ;
+	public ResponseEntity<CompaniasSeguros> guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) ;
 	
 	@DeleteMapping("/Delete/{id}")
 	public void eliminarCompaniasSeguros(@PathVariable("id") Integer id);

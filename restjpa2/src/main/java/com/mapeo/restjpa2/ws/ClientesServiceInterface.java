@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,7 @@ public interface ClientesServiceInterface {
 	public void eliminarCliente(@PathVariable("dni_cliente") Integer dniCliente);
 
 	@PostMapping("/Post")
-	public Clientes guardar(@RequestBody ClientesDto clienteDto);
+	public ResponseEntity<Clientes> guardar(@RequestBody ClientesDto clienteDto);
 
 	@GetMapping("/DSL1/{ciudadInicial}")
 	public List<Clientes> getClientesPorCiudadIniciandoPor(@PathVariable("ciudadInicial") String letra);
@@ -46,11 +47,12 @@ public interface ClientesServiceInterface {
 	public List<Map<String, Object>> buscarCliente(@PathVariable("dniCliente") Integer dniCliente);
 
 	@PostMapping("/query/update")
-	public int actualizarCliente(@RequestBody ClientesDtoUpdate clienteDatos);
+	public ResponseEntity<Integer> actualizarCliente(@RequestBody ClientesDtoUpdate clienteDatos);
 
 	@PostMapping("/query/insert")
-	public int insertarClienteQueryNative(@RequestBody ClientesDto clienteNuevo);
+	public ResponseEntity<Integer> insertarClienteQueryNative(@RequestBody ClientesDto clienteNuevo);
 
+	
 	/*
 	 * Servicio de Anibal
 	 */

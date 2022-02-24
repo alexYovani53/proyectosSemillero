@@ -1,5 +1,6 @@
 package com.mapeo.restjpa2.ws;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,6 @@ public interface FuncionServiceInterface {
 
 	
 	@PostMapping("/guardar/seguro")
-	public int guardarSeguro(@RequestBody SegurosDto seguroNuevo);
+	public ResponseEntity<Integer> guardarSeguro(@RequestBody SegurosDto seguroNuevo);
 	
 }

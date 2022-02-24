@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public interface SegurosServiceInterface {
 	public List<Seguros> getSeguros();
 	
 	@PostMapping("/Post")
-	public Seguros guardarSeguro(@RequestBody SegurosDto seguroDto);
+	public ResponseEntity<Seguros> guardarSeguro(@RequestBody SegurosDto seguroDto);
 	
 	@DeleteMapping("/Delete/{id}")
 	public void eliminarSeguro(@PathVariable("id") Integer id);

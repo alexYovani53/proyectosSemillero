@@ -4,8 +4,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +28,8 @@ import com.mapeo.restjpa2.ws.CompaniaServiceInterface;
 @CrossOrigin
 public class CompaniaService implements CompaniaServiceInterface{
 
+	private static final Log LOG = LogFactory.getLog(CompaniaService.class);
+	
 	@Autowired
 	CompaniaRepository companiaRepo;
 	
@@ -37,10 +43,15 @@ public class CompaniaService implements CompaniaServiceInterface{
 	}
 	
 	@Override
-	public Companias guardar(@RequestBody CompaniasDto companiaDto) {
+	public ResponseEntity<Companias> guardar(@RequestBody CompaniasDto companiaDto) {
 		
 		Companias companias = convertirCompaniasDtoACompania(companiaDto);
-		return companiaRepo.save(companias);
+		try {
+			return ResponseEntity.ok().body(companiaRepo.save(companias));
+		} catch (Exception e) {
+			LOG.error("ERROR ENCONTRADO EN, GUARDAR COMPANIAS:" + e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
 	}
 	
 	@Override

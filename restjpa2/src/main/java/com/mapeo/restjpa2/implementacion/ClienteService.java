@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,9 +45,15 @@ public class ClienteService implements ClientesServiceInterface {
 	}
 
 	@Override
-	public Clientes guardar(@RequestBody ClientesDto clienteDto) {
-		Clientes cliente = convertirClientesDtoAClientes(clienteDto);
-		return clienteRepo.save(cliente);
+	public ResponseEntity<Clientes> guardar(@RequestBody ClientesDto clienteDto) {
+		
+		
+		try {
+			Clientes cliente = convertirClientesDtoAClientes(clienteDto);
+			return new ResponseEntity<>(clienteRepo.save(cliente),null,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null,null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override
@@ -75,13 +83,24 @@ public class ClienteService implements ClientesServiceInterface {
 	}
 
 	@Override
-	public int actualizarCliente(ClientesDtoUpdate clienteDatos) {
-		return catalogoService.cambiarNombre(clienteDatos);
+	public ResponseEntity<Integer> actualizarCliente(ClientesDtoUpdate clienteDatos) {
+		
+		try {
+			return new ResponseEntity<>(catalogoService.cambiarNombre(clienteDatos),null,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(0,null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@Override
-	public int insertarClienteQueryNative(ClientesDto clienteNuevo) {
-		return catalogoService.insertarClienteNuevo(clienteNuevo);
+	public ResponseEntity<Integer> insertarClienteQueryNative(ClientesDto clienteNuevo) {
+
+		try {
+			return new ResponseEntity<>(catalogoService.insertarClienteNuevo(clienteNuevo),null,HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(0,null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
 	}
 
 	/*

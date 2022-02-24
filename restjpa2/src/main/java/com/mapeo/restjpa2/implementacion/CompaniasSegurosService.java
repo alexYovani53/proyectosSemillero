@@ -3,8 +3,12 @@ package com.mapeo.restjpa2.implementacion;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +23,7 @@ import com.mapeo.restjpa2.ws.CompaniasSegurosServiceInterface;
 @Component
 public class CompaniasSegurosService implements CompaniasSegurosServiceInterface{
 
+	private static final Log LOG  = LogFactory.getLog(CompaniasSegurosService.class);
 	
 	@Autowired
 	CompaniasSegurosRepository companiasRepository;
@@ -30,12 +35,18 @@ public class CompaniasSegurosService implements CompaniasSegurosServiceInterface
 	
 	
 	@Override
-	public CompaniasSeguros guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) {
+	public ResponseEntity<CompaniasSeguros> guardar(@RequestBody CompaniasSegurosDto companiasSegurosDto) {
 		
 		ModelMapper map =  new ModelMapper();
 		CompaniasSeguros nuevaCompaniaSeguros =  map.map(companiasSegurosDto, CompaniasSeguros.class);
+			
 		
-		return companiasRepository.save(nuevaCompaniaSeguros);
+		try {
+			return ResponseEntity.ok().body(companiasRepository.save(nuevaCompaniaSeguros));
+		} catch (Exception e) {
+			LOG.error("ERROR ENCONTRADO EN, GUARDAR COMPANIAS-SEGUROS:" + e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
 	}
 
 	@Override

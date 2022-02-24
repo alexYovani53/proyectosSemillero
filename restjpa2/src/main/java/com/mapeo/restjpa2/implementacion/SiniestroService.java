@@ -3,8 +3,12 @@ package com.mapeo.restjpa2.implementacion;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +22,9 @@ import com.mapeo.restjpa2.ws.SiniestroServiceInterface;
 @Component
 public class SiniestroService implements SiniestroServiceInterface{
 
+	
+	private static final Log LOG  = LogFactory.getLog(SiniestroService.class);
+	
 	@Autowired
 	SiniestroRepository siniestroRepo;
 	
@@ -27,10 +34,16 @@ public class SiniestroService implements SiniestroServiceInterface{
 	}
 	
 	@Override
-	public Siniestros guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto) {
+	public ResponseEntity<Siniestros> guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto) {
 		
 		Siniestros siniestro =  convertirSiniestrosDtoASiniestros(siniestrosDto);		
-		return siniestroRepo.save(siniestro);
+		
+		try {
+			return ResponseEntity.ok(siniestroRepo.save(siniestro));
+		} catch (Exception e) {
+			LOG.error("Error encontrado en GUARDAR SINIESTRO "+ e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+		}
 	}
 	
 	@Override

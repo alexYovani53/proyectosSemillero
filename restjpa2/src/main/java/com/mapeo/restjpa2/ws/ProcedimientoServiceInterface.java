@@ -1,5 +1,6 @@
 package com.mapeo.restjpa2.ws;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,6 @@ public interface ProcedimientoServiceInterface {
 	public int eliminarCliente(@PathVariable("dnicl") Integer dnicl);
 	
 	@PostMapping("/ingresarSeguro")
-	public ProcedimientoInsertPolizaDto insertarPoliza(@RequestBody SegurosDto seguro);
+	public ResponseEntity<ProcedimientoInsertPolizaDto> insertarPoliza(@RequestBody SegurosDto seguro);
 	
 }

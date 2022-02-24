@@ -4,9 +4,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +24,8 @@ import com.mapeo.restjpa2.ws.SegurosServiceInterface;
 @Component
 public class SeguroService implements SegurosServiceInterface{
 
+	private static final Log LOG = LogFactory.getLog(SeguroService.class);
+	
 	@Autowired
 	SeguroRepository seguroRepo;
 	
@@ -30,10 +36,17 @@ public class SeguroService implements SegurosServiceInterface{
 	
 	
 	@Override
-	public Seguros guardarSeguro(@RequestBody SegurosDto seguroDto) {
+	public ResponseEntity<Seguros> guardarSeguro(@RequestBody SegurosDto seguroDto) {
 		
 		Seguros seguro =  convertirSegurosDtoASeguros(seguroDto);
-		return seguroRepo.save(seguro);
+
+		try {
+			return new ResponseEntity<>(seguroRepo.save(seguro),HttpStatus.OK);
+		} catch (Exception e) {
+			LOG.error("Error encontrado al GUARDAR SEGURO: "+ e.getMessage());
+			return new ResponseEntity<>(null,null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
 	}
 	
 	@Override
