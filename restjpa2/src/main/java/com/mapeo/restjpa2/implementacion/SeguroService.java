@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mapeo.restjpa2.dto.SegurosDto;
 import com.mapeo.restjpa2.entity.Seguros;
+import com.mapeo.restjpa2.models.PolizaCount;
 import com.mapeo.restjpa2.repository.SeguroRepository;
 import com.mapeo.restjpa2.ws.SegurosServiceInterface;
 
@@ -69,4 +70,14 @@ public class SeguroService implements SegurosServiceInterface{
 		return map.map(seguroDto, Seguros.class);
 	}
 	
+	@Override
+	public List<Seguros> getSegurosPorCompania(@PathVariable("nombre") String nombre){
+		return seguroRepo.buscarPorCompania(nombre);
+	}
+
+
+	@Override
+	public List<PolizaCount> getSegurosPorCliente(String nombreCl) {
+		return seguroRepo.buscarSegurosPorCliente(nombreCl);
+	}
 }

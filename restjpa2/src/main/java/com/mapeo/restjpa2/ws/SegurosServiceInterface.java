@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mapeo.restjpa2.dto.SegurosDto;
 import com.mapeo.restjpa2.entity.Seguros;
+import com.mapeo.restjpa2.models.PolizaCount;
 
 @RestController
 @RequestMapping("/seguros")
@@ -33,4 +34,10 @@ public interface SegurosServiceInterface {
 	
 	@GetMapping("/DSL9/{fecha}")
 	public List<Seguros> getSegurosDespuesFecha(@PathVariable("fecha") @DateTimeFormat(pattern="yyyy-MM-dd") Date fecha);
+
+	@GetMapping("/jpql/{nombre}")
+	public List<Seguros> getSegurosPorCompania(@PathVariable("nombre") String nombre);	
+	
+	@GetMapping("/jpql/cliente/{nombreCl}")
+	public List<PolizaCount> getSegurosPorCliente(@PathVariable("nombreCl") String nombreCl);
 }

@@ -15,7 +15,7 @@ import com.mapeo.restjpa2.ws.ProcedimientoServiceInterface;
 @Component
 public class ProcedimientoService implements ProcedimientoServiceInterface{
 
-	private final static Log LOG  = LogFactory.getLog(ProcedimientoService.class);
+	private static final  Log LOG  = LogFactory.getLog(ProcedimientoService.class);
 	
 	@Autowired 
 	ProcedimientoAlmacenado procAlmacenado;

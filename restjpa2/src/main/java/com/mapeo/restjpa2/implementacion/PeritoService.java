@@ -24,7 +24,7 @@ import com.mapeo.restjpa2.ws.PeritoServiceInterface;
 @Component
 public class PeritoService implements PeritoServiceInterface{
 
-	private final static Log LOG  = LogFactory.getLog(PeritoService.class);
+	private static final  Log LOG  = LogFactory.getLog(PeritoService.class);
 	
 	@Autowired
 	PeritoRepository peritoRepo;

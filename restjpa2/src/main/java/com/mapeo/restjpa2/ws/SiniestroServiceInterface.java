@@ -1,7 +1,9 @@
 package com.mapeo.restjpa2.ws;
 
+import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,5 +34,8 @@ public interface SiniestroServiceInterface {
 	
 	@GetMapping("/dSL10")
 	public List<Siniestros> getSiniestros(@RequestParam("limit1") Integer limit1, @RequestParam("limit2") Integer limit2);
+	
+	@GetMapping("/nativequery/{fecha}/{causa}")
+	public List<Siniestros> getSiniestrosFechaCausa(@PathVariable("fecha") @DateTimeFormat(pattern="yyyy-MM-dd") Date fecha,@PathVariable("causa") String Causa);
 	
 }

@@ -1,5 +1,6 @@
 package com.mapeo.restjpa2.implementacion;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -64,6 +66,11 @@ public class SiniestroService implements SiniestroServiceInterface{
 				
 		ModelMapper map =  new ModelMapper();
 		return map.map(siniestrosDto, Siniestros.class);
+	}
+
+	@Override
+	public List<Siniestros> getSiniestrosFechaCausa(@PathVariable("fecha") @DateTimeFormat(pattern="yyyy-MM-dd") Date fecha, String Causa) {
+		return siniestroRepo.buscarPorFechaYCausa(fecha, Causa);
 	}
 	
 	
