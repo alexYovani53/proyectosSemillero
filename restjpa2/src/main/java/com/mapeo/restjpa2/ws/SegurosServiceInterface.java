@@ -18,6 +18,10 @@ import com.mapeo.restjpa2.dto.SegurosDto;
 import com.mapeo.restjpa2.entity.Seguros;
 import com.mapeo.restjpa2.models.PolizaCount;
 
+/**
+ * @author Yovani
+ *
+ */
 @RestController
 @RequestMapping("/seguros")
 @CrossOrigin
@@ -35,9 +39,20 @@ public interface SegurosServiceInterface {
 	@GetMapping("/DSL9/{fecha}")
 	public List<Seguros> getSegurosDespuesFecha(@PathVariable("fecha") @DateTimeFormat(pattern="yyyy-MM-dd") Date fecha);
 
+	
+	/**
+	 * @param nombre
+	 * @return lista de seguros, filtrada por la compania con la que se relaciona.
+	 */
 	@GetMapping("/jpql/{nombre}")
 	public List<Seguros> getSegurosPorCompania(@PathVariable("nombre") String nombre);	
 	
+	
+	
+	/**
+	 * @param nombreCl
+	 * @return Lista del conteo de polizas asociadas a un cliente, filtrado por el primer apellido de este. 
+	 */
 	@GetMapping("/jpql/cliente/{nombreCl}")
 	public List<PolizaCount> getSegurosPorCliente(@PathVariable("nombreCl") String nombreCl);
 }

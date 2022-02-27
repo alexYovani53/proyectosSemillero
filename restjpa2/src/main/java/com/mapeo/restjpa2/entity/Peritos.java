@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -19,6 +20,8 @@ import lombok.Data;
 @Entity
 @Table(name = "PERITOS")
 @Data
+@NamedQuery(name="Peritos.peritosSiniestrosCausa",query = "SELECT e FROM Peritos e INNER JOIN e.siniestros x WHERE x.causas = ?1")
+
 public class Peritos implements Serializable{
 
 	/**

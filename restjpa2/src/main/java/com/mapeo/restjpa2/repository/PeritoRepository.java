@@ -16,4 +16,6 @@ public interface PeritoRepository extends JpaRepository<Peritos, Serializable>{
 	
 	public List<Peritos> findByApellidoPerito2IsNullOrTelefonoOficinaIsNull();
 	
+	public List<Peritos> peritosSiniestrosCausa(String causa);
+	
 }

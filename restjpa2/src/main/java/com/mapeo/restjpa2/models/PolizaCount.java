@@ -2,21 +2,21 @@ package com.mapeo.restjpa2.models;
 
 public class PolizaCount {
 
-	private Integer numeroPoliza;
+	private Integer dniCl;
 	private Long total;
 	
-	public PolizaCount(Integer numeroPoliza, Long total) {
+	public PolizaCount(Integer dniCl, Long total) {
 		super();
-		this.numeroPoliza = numeroPoliza;
+		this.dniCl = dniCl;
 		this.total = total;
 	}
 
-	public Integer getNumeroPoliza() {
-		return numeroPoliza;
+	public Integer getDniCl() {
+		return dniCl;
 	}
 
-	public void setNumeroPoliza(Integer numeroPoliza) {
-		this.numeroPoliza = numeroPoliza;
+	public void setDniCl(Integer dniCl) {
+		this.dniCl = dniCl;
 	}
 
 	public Long getTotal() {

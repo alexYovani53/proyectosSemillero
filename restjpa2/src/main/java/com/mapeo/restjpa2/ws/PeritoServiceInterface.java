@@ -36,4 +36,11 @@ public interface PeritoServiceInterface {
 	@GetMapping("/DSL8")
 	public List<Peritos> getPeritosNulos();
 	
+	/**
+	 * @param causas
+	 * @return lista de peritos, filtrando por los siniestros atendidos y causas coicidentes
+	 */
+	@GetMapping("/jpql/{causas}")
+	public List<Peritos> getPeritosSiniestrosCausas(@PathVariable("causas") String causas);
+	
 }

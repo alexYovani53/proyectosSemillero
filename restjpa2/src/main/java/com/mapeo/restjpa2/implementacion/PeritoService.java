@@ -70,5 +70,10 @@ public class PeritoService implements PeritoServiceInterface{
 		ModelMapper map =  new ModelMapper();
 		return map.map(peritoDto, Peritos.class);
 	}
+
+	@Override
+	public List<Peritos> getPeritosSiniestrosCausas(String causas) {
+		return peritoRepo.peritosSiniestrosCausa(causas);
+	}
 	
 }

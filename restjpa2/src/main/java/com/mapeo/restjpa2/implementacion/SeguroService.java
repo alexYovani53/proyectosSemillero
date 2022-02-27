@@ -64,12 +64,6 @@ public class SeguroService implements SegurosServiceInterface{
 	}
 
 	
-	public Seguros convertirSegurosDtoASeguros(SegurosDto seguroDto) {
-				
-		ModelMapper map =  new ModelMapper();
-		return map.map(seguroDto, Seguros.class);
-	}
-	
 	@Override
 	public List<Seguros> getSegurosPorCompania(@PathVariable("nombre") String nombre){
 		return seguroRepo.buscarPorCompania(nombre);
@@ -80,4 +74,13 @@ public class SeguroService implements SegurosServiceInterface{
 	public List<PolizaCount> getSegurosPorCliente(String nombreCl) {
 		return seguroRepo.buscarSegurosPorCliente(nombreCl);
 	}
+
+	
+	public Seguros convertirSegurosDtoASeguros(SegurosDto seguroDto) {
+				
+		ModelMapper map =  new ModelMapper();
+		return map.map(seguroDto, Seguros.class);
+	}
+	
+	
 }
