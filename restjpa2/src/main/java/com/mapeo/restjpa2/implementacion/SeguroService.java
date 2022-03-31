@@ -41,6 +41,7 @@ public class SeguroService implements SegurosServiceInterface{
 		
 		Seguros seguro =  convertirSegurosDtoASeguros(seguroDto);
 
+		LOG.info(seguro);
 		try {
 			return new ResponseEntity<>(seguroRepo.save(seguro),HttpStatus.OK);
 		} catch (Exception e) {
@@ -77,7 +78,9 @@ public class SeguroService implements SegurosServiceInterface{
 
 	
 	public Seguros convertirSegurosDtoASeguros(SegurosDto seguroDto) {
-				
+		
+		System.out.println(seguroDto);
+		
 		ModelMapper map =  new ModelMapper();
 		return map.map(seguroDto, Seguros.class);
 	}
