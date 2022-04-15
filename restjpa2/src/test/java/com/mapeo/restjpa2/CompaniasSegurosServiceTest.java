@@ -72,7 +72,7 @@ class CompaniasSegurosServiceTest {
 	@Test
 	void getFiltrandoPorNombreCompanias() {
 		
-		List<CompaniasSeguros> listaCompaniasSeguros = companiasRepository.findByNombreCompaniaNot("UNIVERSALES");
+		List<CompaniasSeguros> listaCompaniasSeguros = companiasRepository.findByNombreCompaniaNot("Atocha S.A..");
 		
 		LOG.info("TEST getFiltrandoPorNombreCompanias: COMPLETADO CON EXITO");
 		assertTrue(listaCompaniasSeguros.size()> 0 ,"PRUEBA UNITARIA EXITOSA: getFiltrandoPorNombreCompanias");
@@ -83,7 +83,7 @@ class CompaniasSegurosServiceTest {
 	@Test
 	void getFiltrandoCompania() {
 		
-		List<CompaniasSeguros> listaCompaniasSeguros = companiasRepository.findByNumeroPolizaBefore(40);
+		List<CompaniasSeguros> listaCompaniasSeguros = companiasRepository.findByNumeroPolizaBefore(500);
 		
 		LOG.info("TEST getFiltrandoCompania: COMPLETADO CON EXITO");
 		assertTrue(listaCompaniasSeguros.size()> 0 ,"PRUEBA UNITARIA EXITOSA: getFiltrandoCompania");

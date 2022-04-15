@@ -47,7 +47,7 @@ import com.mapeo.restjpa2.service.CatalogosService;
 		Companias companias =  new Companias();
 		companias.setClaseVia("N/A");
 		companias.setCodPostal(3005);
-		companias.setNombreCompania("GUATEX2");
+		companias.setNombreCompania("Universales");
 		companias.setNombreVia("N/A");
 		companias.setNotas("Ninguna");
 		companias.setNumeroVia(344);
@@ -65,7 +65,7 @@ import com.mapeo.restjpa2.service.CatalogosService;
 	void eliminarCompania() {
 		
 		try {
-			Optional<Companias> busqueda =  companiaRepo.findById("Atocha S.A. 2");
+			Optional<Companias> busqueda =  companiaRepo.findById("Universales");
 			if(busqueda.isPresent()) {
 				companiaRepo.delete(busqueda.get());
 			}
@@ -83,7 +83,7 @@ import com.mapeo.restjpa2.service.CatalogosService;
 	@Test 
 	void getConDosParametros() {
 		
-		List<Companias> listaCompanias = companiaRepo.findByCodPostalGreaterThanAndNombreCompaniaLike(3000,"GUATEX");
+		List<Companias> listaCompanias = companiaRepo.findByCodPostalGreaterThanAndNombreCompaniaLike(3000,"GUATEX2");
 		
 		LOG.info("TEST findByCodPostalGreaterThanAndNombreCompaniaLike: COMPLETADO CON EXITO");
 		assertTrue(listaCompanias.size()>0,"PRUEBA UNITARA EXITOSA, getConDosParametros ");
@@ -101,7 +101,7 @@ import com.mapeo.restjpa2.service.CatalogosService;
 	@Test 
 	void getSegurosPorCompania(){
 		
-		List<Map<String, Object>> listaCompaniasQuery =  catalogoService.segurosPorCompania("GUATEX");
+		List<Map<String, Object>> listaCompaniasQuery =  catalogoService.segurosPorCompania("GUATEX2");
 		
 		LOG.info("TEST segurosPorCompania: COMPLETADO CON EXITO");
 		assertTrue(listaCompaniasQuery.size()>0,"PRUEBA UNITARA EXITOSA, getSegurosPorCompania ");

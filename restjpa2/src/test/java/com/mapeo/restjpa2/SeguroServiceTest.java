@@ -41,15 +41,27 @@ class SeguroServiceTest {
 	@Test
 	void guardarSeguro() {
 		Seguros seguro =  new Seguros();
+		Seguros resultadoGuardar = null;
+		try {
+			seguro.setCondicionesParticulares("ACCIDENTE");
+			seguro.setDniCl(169);
+			seguro.setFechaInicio(new Date());
+			seguro.setFechaVencimiento(utilidad.getFecha("10/10/2022"));
+			seguro.setRamo("vida");
+			
+			
+			resultadoGuardar = seguroRepo.save(seguro);
+		} catch (Exception e) {
 
-		seguro.setCondicionesParticulares("ACCIDENTE");
-		seguro.setDniCl(8);
-		seguro.setFechaInicio(new Date());
-		seguro.setFechaVencimiento(utilidad.getFecha("10/11/2022"));
-		seguro.setRamo("vida");
-		
-		
-		Seguros resultadoGuardar = seguroRepo.save(seguro);
+			seguro.setCondicionesParticulares("ACCIDENTE");
+			seguro.setDniCl(4);
+			seguro.setFechaInicio(new Date());
+			seguro.setFechaVencimiento(utilidad.getFecha("10/10/2022"));
+			seguro.setRamo("vida");
+			
+			
+			resultadoGuardar = seguroRepo.save(seguro);
+		}
 		
 		LOG.info("TEST guardarSeguro: COMPLETADO CON EXITO");
 		assertNotNull(resultadoGuardar,"PRUEBA UNITARIA EXITOSA: guardarSeguro");

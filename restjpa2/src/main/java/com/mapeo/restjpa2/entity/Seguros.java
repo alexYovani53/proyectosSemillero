@@ -61,7 +61,7 @@ public class Seguros implements Serializable{
 		
 
 	@JoinColumn(name="DNI_CL",updatable = false,insertable = false)
-	@ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@ManyToOne(optional = false,fetch = FetchType.EAGER)
 	private Clientes cliente;
 
 	

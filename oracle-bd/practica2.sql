@@ -17,14 +17,6 @@
 
 -- predefined type, no DDL - XMLTYPE
 
-CREATE TABLE practica2.usuario(
-    id_usuario  NUMBER NOT NULL,
-    usuario     VARCHAR2(30 byte) not null,
-    correo      VARCHAR2(50 byte) not null,
-    password    VARCHAR2(80 byte) not null,
-    constraint usuario_pk PRIMARY KEY (id_usuario)
-)
-
 CREATE TABLE practica2.clientes (
     dni_cl        NUMBER NOT NULL,
     nombre_cl     VARCHAR2(30 BYTE),
@@ -208,8 +200,6 @@ CREATE SEQUENCE sequencia_siniestros INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE sequencia_peritos INCREMENT BY 1 START WITH 4;
 
 CREATE SEQUENCE sequencia_companias_seguros INCREMENT BY 1 START WITH 1;
-
-CREATE SEQUENCE sequencia_usuarios INCREMENT BY 1 START WITH 1;
 
 /*
 

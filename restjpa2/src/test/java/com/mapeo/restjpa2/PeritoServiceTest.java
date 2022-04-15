@@ -44,6 +44,7 @@ class PeritoServiceTest {
 		perito.setClaseVia("N/A");
 		perito.setCodPostal(3001);
 		perito.setNombrePerito("Yovani");
+		perito.setNombreVia("VIA1");
 		perito.setNumeroVia(20);
 		perito.setTelefonoContacto(34383644);
 		perito.setTelefonoOficina(34383644);
@@ -58,7 +59,7 @@ class PeritoServiceTest {
 	@Test
 	void eliminarPerito() {
 		
-		Optional<Peritos> peritoExistente = peritoRepo.findById(7);
+		Optional<Peritos> peritoExistente = peritoRepo.findById(5);
 		if(peritoExistente.isPresent()) {
 			peritoRepo.delete(peritoExistente.get());
 		}

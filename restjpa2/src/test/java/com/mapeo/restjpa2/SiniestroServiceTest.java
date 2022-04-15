@@ -40,15 +40,29 @@ class SiniestroServiceTest {
 	@Test
 	void guardarSiniestro() {
 		
-		Siniestros siniestro =  new Siniestros();		
-		siniestro.setAceptado("SI");
-		siniestro.setCausas("ACCIDENTE");
-		siniestro.setFechaSiniestro(utilidad.getFecha("26/01/2022"));
-		siniestro.setIdSiniestro(20);
-		siniestro.setIndemnizacion(3044);
-		siniestro.setNumeroPoliza(48);
+		Siniestros siniestro =  new Siniestros();
 		
-		Siniestros resultadoGuardar =  siniestroRepo.save(siniestro);
+		Siniestros resultadoGuardar =  null;
+
+		try {
+			siniestro.setAceptado("SI");
+			siniestro.setCausas("ACCIDENTE");
+			siniestro.setFechaSiniestro(utilidad.getFecha("10/10/2022"));
+			siniestro.setIndemnizacion(3044);
+			siniestro.setNumeroPoliza(215);
+			siniestro.setDniPerito(91);
+			
+			resultadoGuardar = siniestroRepo.save(siniestro);
+		} catch (Exception e) {
+			siniestro.setAceptado("SI");
+			siniestro.setCausas("ACCIDENTE");
+			siniestro.setFechaSiniestro(utilidad.getFecha("10/10/2022"));
+			siniestro.setIndemnizacion(3044);
+			siniestro.setNumeroPoliza(56);
+			siniestro.setDniPerito(4);
+			
+			resultadoGuardar = siniestroRepo.save(siniestro);
+		}
 		
 		LOG.info("TEST guardarSiniestro: COMPLETADO CON EXITO");
 		assertNotNull(resultadoGuardar,"PRUEBA UNITARIA EXITOSA");

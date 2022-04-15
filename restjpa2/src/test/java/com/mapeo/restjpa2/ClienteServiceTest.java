@@ -54,9 +54,14 @@ class ClienteServiceTest {
 	@Test
 	void eliminarCliente() {
 		try {
-			Optional<Clientes> clienteBusqueda = clienteRepo.findById(2);
+			Optional<Clientes> clienteBusqueda = clienteRepo.findById(168);
 			if(clienteBusqueda.isPresent()) {
 				clienteRepo.delete(clienteBusqueda.get());
+			}else {
+				clienteBusqueda = clienteRepo.findById(2);
+				if(clienteBusqueda.isPresent()) {
+					clienteRepo.delete(clienteBusqueda.get());
+				}
 			}
 			LOG.info("TEST eliminarCliente: COMPLETADO CON EXITO");
 			assert(true);
@@ -128,7 +133,11 @@ class ClienteServiceTest {
 	
 	@Test
 	void buscarCliente() {
-		List<Map<String, Object>> listaClientes =  catalogoService.buscarCliente(4);
+		List<Map<String, Object>> listaClientes =  catalogoService.buscarCliente(169);
+		
+		if (listaClientes.size() == 0) {
+			 listaClientes =  catalogoService.buscarCliente(4);
+		}
 
 		LOG.info("TEST buscarCliente USANDO QUERY: COMPLETADO CON EXITO");
 		assertNotEquals(0, listaClientes.size(),"TEST BUSCAR CLIENTES CON QUERY");

@@ -55,6 +55,7 @@ public class SeguroService implements SegurosServiceInterface{
 	public void eliminarSeguro(@PathVariable("id") Integer id) {
 		Optional<Seguros> seguroBusqueda =  seguroRepo.findById(id);
 		if(seguroBusqueda.isPresent()) {
+
 			seguroRepo.delete(seguroBusqueda.get());
 		}
 	}
