@@ -2,6 +2,7 @@ package com.mapeo.restjpa2.ws;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +25,11 @@ public interface PeritoServiceInterface {
 	@GetMapping("/GetAll")
 	public List<Peritos> getPeritos();
 	
+	// USANDO PAGINADOR
+	@GetMapping("/paginador/{pagina}/{cantidad}")
+	public Page<Peritos> buscarPaginado(@PathVariable("pagina") int pagina,@PathVariable("cantidad") int cantidad);
+	
+	
 	@PostMapping("/Post")
 	public ResponseEntity<Peritos> guardarPerito(@RequestBody PeritosDto peritoDto) ;
 	
@@ -42,5 +48,7 @@ public interface PeritoServiceInterface {
 	 */
 	@GetMapping("/jpql/{causas}")
 	public List<Peritos> getPeritosSiniestrosCausas(@PathVariable("causas") String causas);
+	
+	
 	
 }

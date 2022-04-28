@@ -3,6 +3,7 @@ package com.mapeo.restjpa2.ws;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +26,11 @@ public interface SiniestroServiceInterface {
 
 	@GetMapping("/getAll")
 	public List<Siniestros> getSiniestros();
+	
+	// USANDO PAGINADOR
+	@GetMapping("/paginador/{pagina}/{cantidad}")
+	public Page<Siniestros> buscarPaginado(@PathVariable("pagina") int pagina,@PathVariable("cantidad") int cantidad);
+	
 	
 	@PostMapping("/post")
 	public ResponseEntity<Siniestros> guardarSiniestro(@RequestBody SiniestrosDto siniestrosDto);

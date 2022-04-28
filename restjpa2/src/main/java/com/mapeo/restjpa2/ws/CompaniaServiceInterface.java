@@ -3,6 +3,7 @@ package com.mapeo.restjpa2.ws;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,6 +38,14 @@ public interface CompaniaServiceInterface {
 	@GetMapping("/DSL4")
 	public List<Companias> getCompaniaTerminadaEn(@RequestParam("textoFinal") String textoFinal,@RequestParam("textoContenido") String textoContenido);
 	
-	@GetMapping("/query/segurosPorCompania")
-	public List<Map<String, Object>> getSegurosPorCompania(@RequestParam("compania") String compania);
+	@GetMapping("/query/segurosPorCompania/{compania}")
+	public List<Map<String, Object>> getSegurosPorCompania(@PathVariable("compania") String compania);
+	
+
+	@GetMapping("/query/segurosPorCompania2")
+	public List<Map<String, Object>> getSegurosPorCompania2(@RequestParam("compania") String compania);
+	
+	// USANDO PAGINADOR
+	@GetMapping("paginador/{pagina}/{cantidad}")
+	public Page<Companias> buscarPaginado(@PathVariable("pagina") int pagina,@PathVariable("cantidad") int cantidad);
 }

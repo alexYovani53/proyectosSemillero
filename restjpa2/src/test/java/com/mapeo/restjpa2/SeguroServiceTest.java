@@ -43,8 +43,9 @@ class SeguroServiceTest {
 		Seguros seguro =  new Seguros();
 		Seguros resultadoGuardar = null;
 		try {
+			seguro.setNumeroPoliza(106);
 			seguro.setCondicionesParticulares("ACCIDENTE");
-			seguro.setDniCl(169);
+			seguro.setDniCl(53);
 			seguro.setFechaInicio(new Date());
 			seguro.setFechaVencimiento(utilidad.getFecha("10/10/2022"));
 			seguro.setRamo("vida");
@@ -53,8 +54,9 @@ class SeguroServiceTest {
 			resultadoGuardar = seguroRepo.save(seguro);
 		} catch (Exception e) {
 
+			seguro.setNumeroPoliza(106);
 			seguro.setCondicionesParticulares("ACCIDENTE");
-			seguro.setDniCl(4);
+			seguro.setDniCl(53);
 			seguro.setFechaInicio(new Date());
 			seguro.setFechaVencimiento(utilidad.getFecha("10/10/2022"));
 			seguro.setRamo("vida");
@@ -70,7 +72,7 @@ class SeguroServiceTest {
 	@Test
 	void eliminarSeguro() {
 		
-		Optional<Seguros> seguroBusqueda =  seguroRepo.findById(29);
+		Optional<Seguros> seguroBusqueda =  seguroRepo.findById(106);
 		if(seguroBusqueda.isPresent()) {
 			seguroRepo.delete(seguroBusqueda.get());
 		}

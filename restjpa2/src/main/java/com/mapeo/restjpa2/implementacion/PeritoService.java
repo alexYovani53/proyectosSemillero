@@ -7,6 +7,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -74,6 +77,12 @@ public class PeritoService implements PeritoServiceInterface{
 	@Override
 	public List<Peritos> getPeritosSiniestrosCausas(String causas) {
 		return peritoRepo.peritosSiniestrosCausa(causas);
+	}
+
+	@Override
+	public Page<Peritos> buscarPaginado(int pagina, int cantidad) {
+		Pageable pageable = PageRequest.of(pagina, cantidad);
+		return peritoRepo.findAll(pageable);
 	}
 	
 }

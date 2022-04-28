@@ -28,8 +28,7 @@ class CompaniasSegurosServiceTest {
 	
 	@Test
 	void getCompaniasSeguros() {
-		List<CompaniasSeguros> listaCompaniasSeguros =  companiasRepository.findAll();
-		
+		List<CompaniasSeguros> listaCompaniasSeguros =  companiasRepository.findAll();		
 
 		LOG.info("TEST getCompaniasSeguros: COMPLETADO CON EXITO");
 		assertTrue(listaCompaniasSeguros.size()> 0 ,"PRUEBA UNITARIA EXITOSA: getCompaniasSeguros");
@@ -40,7 +39,7 @@ class CompaniasSegurosServiceTest {
 		try {
 			CompaniasSeguros nuevaCompaniaSeguros = new CompaniasSeguros();
 			nuevaCompaniaSeguros.setNombreCompania("GUATEX2");
-			nuevaCompaniaSeguros.setNumeroPoliza(38);
+			nuevaCompaniaSeguros.setNumeroPoliza(106);
 			
 			CompaniasSeguros resultadoGuardar =  companiasRepository.save(nuevaCompaniaSeguros);
 			

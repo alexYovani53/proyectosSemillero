@@ -53,6 +53,9 @@ public interface SegurosServiceInterface {
 	 * @param nombreCl
 	 * @return Lista del conteo de polizas asociadas a un cliente, filtrado por el primer apellido de este. 
 	 */
-	@GetMapping("/jpql/cliente/{nombreCl}")
-	public List<PolizaCount> getSegurosPorCliente(@PathVariable("nombreCl") String nombreCl);
+	@GetMapping("/jpql/cliente/{dniCl}")
+	public List<PolizaCount> getCountSegurosPorCliente(@PathVariable("dniCl") Integer nombreCl);
+
+	@GetMapping("/jpql/clientedni/{dniCl}")
+	public List<Seguros> getSegurosPorDniCl(@PathVariable("dniCl") Integer dniCl);
 }

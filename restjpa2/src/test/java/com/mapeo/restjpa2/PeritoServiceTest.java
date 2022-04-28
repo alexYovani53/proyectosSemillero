@@ -38,6 +38,7 @@ class PeritoServiceTest {
 		
 		Peritos perito =  new Peritos();
 		
+		perito.setDniPerito(44);
 		perito.setApellidoPerito1("Jeronimo");
 		perito.setApellidoPerito2("Tomas");
 		perito.setCiudad("Guatemala");
@@ -59,7 +60,7 @@ class PeritoServiceTest {
 	@Test
 	void eliminarPerito() {
 		
-		Optional<Peritos> peritoExistente = peritoRepo.findById(5);
+		Optional<Peritos> peritoExistente = peritoRepo.findById(44);
 		if(peritoExistente.isPresent()) {
 			peritoRepo.delete(peritoExistente.get());
 		}

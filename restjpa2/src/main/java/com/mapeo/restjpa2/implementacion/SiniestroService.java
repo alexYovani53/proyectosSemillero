@@ -8,6 +8,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -71,6 +74,13 @@ public class SiniestroService implements SiniestroServiceInterface{
 	@Override
 	public List<Siniestros> getSiniestrosFechaCausa(@PathVariable("fecha") @DateTimeFormat(pattern="yyyy-MM-dd") Date fecha, String Causa) {
 		return siniestroRepo.buscarPorFechaYCausa(fecha, Causa);
+	}
+
+	// PAGINADOR
+	@Override
+	public Page<Siniestros> buscarPaginado(int pagina, int cantidad) {
+		Pageable pageable = PageRequest.of(pagina, cantidad);
+		return siniestroRepo.findAll(pageable);
 	}
 	
 	

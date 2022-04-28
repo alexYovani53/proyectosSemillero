@@ -27,9 +27,15 @@ public interface SeguroRepository extends JpaRepository<Seguros, Serializable>{
 	
 	@Query("SELECT  new com.mapeo.restjpa2.models.PolizaCount ( seg.dniCl, count(seg) ) FROM Seguros seg "
 			+ "INNER JOIN seg.cliente  cl "
-			+ "WHERE cl.apellido1 LIKE :apellido1 "
+			+ "WHERE cl.dniCl = :dniCl "
 			+ "GROUP BY seg.dniCl "
 			+ "ORDER BY seg.dniCl")
-	List<PolizaCount> buscarSegurosPorCliente (@Param("apellido1") String apellido1);
+	List<PolizaCount> buscarSegurosPorCliente (@Param("dniCl") Integer dniCl);
+	
+	@Query("SELECT seg FROM Seguros seg "
+			+ "INNER JOIN seg.cliente cliente "
+			+ "WHERE cliente.dniCl = :dniCl "
+			+ "ORDER BY seg.numeroPoliza DESC")
+	List<Seguros> buscarSegurosPorDniCl (@Param("dniCl") Integer dniCl);
 	
 }

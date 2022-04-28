@@ -40,7 +40,11 @@ public class SeguroService implements SegurosServiceInterface{
 	public ResponseEntity<Seguros> guardarSeguro(@RequestBody SegurosDto seguroDto) {
 		
 		Seguros seguro =  convertirSegurosDtoASeguros(seguroDto);
+		
 
+		LOG.info(seguroDto);
+		LOG.info(seguro);
+		
 		LOG.info(seguro);
 		try {
 			return new ResponseEntity<>(seguroRepo.save(seguro),HttpStatus.OK);
@@ -73,10 +77,16 @@ public class SeguroService implements SegurosServiceInterface{
 
 
 	@Override
-	public List<PolizaCount> getSegurosPorCliente(String nombreCl) {
-		return seguroRepo.buscarSegurosPorCliente(nombreCl);
+	public List<PolizaCount> getCountSegurosPorCliente(Integer dniCl) {
+		return seguroRepo.buscarSegurosPorCliente(dniCl);
 	}
 
+	@Override
+	public List<Seguros> getSegurosPorDniCl(Integer dniCl) {
+		return seguroRepo.buscarSegurosPorDniCl(dniCl);
+	}
+
+	
 	
 	public Seguros convertirSegurosDtoASeguros(SegurosDto seguroDto) {
 		

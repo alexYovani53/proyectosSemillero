@@ -8,6 +8,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -84,8 +87,18 @@ public class CompaniaService implements CompaniaServiceInterface{
 	public List<Map<String, Object>> getSegurosPorCompania(String compania) {
 		return catalogoService.segurosPorCompania(compania);
 	}
+
+	@Override
+	public List<Map<String, Object>> getSegurosPorCompania2(String compania) {
+		return catalogoService.segurosPorCompania(compania);
+	}
 	
-	
+	@Override
+	public Page<Companias> buscarPaginado(int pagina, int cantidad) {
+		Pageable pageable = PageRequest.of(pagina, cantidad);
+		return companiaRepo.findAll(pageable);
+	}
+
 	
 	
 	

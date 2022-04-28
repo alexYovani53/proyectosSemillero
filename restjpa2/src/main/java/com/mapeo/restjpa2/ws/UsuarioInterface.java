@@ -23,10 +23,15 @@ public interface UsuarioInterface {
 	@GetMapping("/getall")
 	public List<Usuario> getAll();
 	
+	@GetMapping("/getfallo")
+	public ResponseEntity<Integer> pedirFallo();
+	
 	@GetMapping("/login")
 	public List<Usuario> findByCorreoPassword(@RequestParam("correo") String correo, @RequestParam("password") String password);
-	
-	
+		
 	@PostMapping("/post")
 	public ResponseEntity<Usuario> guardarUsuario(@RequestBody UsuarioDto nuevoUsuario);
+	
+	
+	
 }

@@ -49,8 +49,8 @@ class SiniestroServiceTest {
 			siniestro.setCausas("ACCIDENTE");
 			siniestro.setFechaSiniestro(utilidad.getFecha("10/10/2022"));
 			siniestro.setIndemnizacion(3044);
-			siniestro.setNumeroPoliza(215);
-			siniestro.setDniPerito(91);
+			siniestro.setNumeroPoliza(107);
+			siniestro.setDniPerito(45);
 			
 			resultadoGuardar = siniestroRepo.save(siniestro);
 		} catch (Exception e) {
@@ -58,8 +58,8 @@ class SiniestroServiceTest {
 			siniestro.setCausas("ACCIDENTE");
 			siniestro.setFechaSiniestro(utilidad.getFecha("10/10/2022"));
 			siniestro.setIndemnizacion(3044);
-			siniestro.setNumeroPoliza(56);
-			siniestro.setDniPerito(4);
+			siniestro.setNumeroPoliza(107);
+			siniestro.setDniPerito(45);
 			
 			resultadoGuardar = siniestroRepo.save(siniestro);
 		}

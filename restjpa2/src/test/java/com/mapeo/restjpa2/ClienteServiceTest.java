@@ -54,15 +54,25 @@ class ClienteServiceTest {
 	@Test
 	void eliminarCliente() {
 		try {
-			Optional<Clientes> clienteBusqueda = clienteRepo.findById(168);
-			if(clienteBusqueda.isPresent()) {
-				clienteRepo.delete(clienteBusqueda.get());
-			}else {
-				clienteBusqueda = clienteRepo.findById(2);
-				if(clienteBusqueda.isPresent()) {
-					clienteRepo.delete(clienteBusqueda.get());
-				}
-			}
+			
+			Clientes cliente = new Clientes();
+			cliente.setDniCl(62);
+			cliente.setApellido1("Jeronimo");
+			cliente.setApellido2("Ajuchan");
+			cliente.setCiudad("Guatemala");
+			cliente.setClaseVia("N/A");
+			cliente.setCodPostal(3004);
+			cliente.setNombreCl("Alex");
+			cliente.setNombreVia("N/A");
+			cliente.setNumeroVia(5);
+			cliente.setObservaciones("Ninguna");
+			cliente.setTelefono(34383647); 			
+			clienteRepo.save(cliente);
+			
+			
+			Optional<Clientes> clienteBusqueda = clienteRepo.findById(62);
+			clienteRepo.delete(clienteBusqueda.get());
+			
 			LOG.info("TEST eliminarCliente: COMPLETADO CON EXITO");
 			assert(true);
 			
@@ -77,6 +87,7 @@ class ClienteServiceTest {
 	void guardar() {
 		try {
 			Clientes cliente = new Clientes();
+			cliente.setDniCl(53);
 			cliente.setApellido1("Jeronimo");
 			cliente.setApellido2("Ajuchan");
 			cliente.setCiudad("Guatemala");
@@ -133,7 +144,7 @@ class ClienteServiceTest {
 	
 	@Test
 	void buscarCliente() {
-		List<Map<String, Object>> listaClientes =  catalogoService.buscarCliente(169);
+		List<Map<String, Object>> listaClientes =  catalogoService.buscarCliente(53);
 		
 		if (listaClientes.size() == 0) {
 			 listaClientes =  catalogoService.buscarCliente(4);
@@ -149,7 +160,7 @@ class ClienteServiceTest {
 	void actualizarCliente() {
 		
 		ClientesDtoUpdate cliente =  new ClientesDtoUpdate();
-		cliente.setDniCliente(4);
+		cliente.setDniCliente(53);
 		cliente.setNombreCliente("Nuevo");
 		
 		int resultadoActualizacion = catalogoService.cambiarNombre(cliente);

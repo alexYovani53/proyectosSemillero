@@ -28,6 +28,18 @@ public class UsuarioImplementacion implements UsuarioInterface {
 	public List<Usuario> getAll() {
 		return repositorioUsuario.findAll();
 	}
+	
+
+	@Override
+	public List<Usuario> findByCorreoPassword(String correo, String password) {
+		return repositorioUsuario.findByCorreoAndPassword(correo, password);
+	}
+	
+
+	@Override
+	public ResponseEntity<Integer> pedirFallo() {
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(0);
+	}
 
 	@Override
 	public ResponseEntity<Usuario> guardarUsuario(UsuarioDto nuevoUsuario) {
@@ -48,8 +60,4 @@ public class UsuarioImplementacion implements UsuarioInterface {
 		return map.map(usuarioNuevo, Usuario.class);
 	}
 
-	@Override
-	public List<Usuario> findByCorreoPassword(String correo, String password) {
-		return repositorioUsuario.findByCorreoAndPassword(correo, password);
-	}
 }
